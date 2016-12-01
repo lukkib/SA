@@ -7,6 +7,7 @@
   3. `osmfilter` (installation needed)
   4. `Graz.poly`(download `http://kti.tugraz.at/staff/rkern/courses/sa/index.html`)
   5. `routes.csv` (download `http://kti.tugraz.at/staff/rkern/courses/sa/index.html`)
+  6. `mapping.csv` (download `http://kti.tugraz.at/staff/rkern/courses/sa/index.html`)
 
 ### Setup
 

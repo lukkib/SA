@@ -7,7 +7,7 @@ plugins {
 
 }
 
-mainClassName = 'at.tugraz.sa.Main'
+mainClassName = 'Main'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -62,7 +62,7 @@ dependencies
 jooq {
   version = '3.8.5'
   edition = 'OSS'
-  trec(sourceSets.main) {
+  sa(sourceSets.main) {
     jdbc {
       driver = 'org.h2.Driver'
       url = 'jdbc:h2:file:./var/osmgraz'
