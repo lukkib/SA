@@ -1,5 +1,6 @@
 import Controller.Planer;
-import Controller.dataHandler;
+import Controller.DataHandler;
+import at.tugraz.sa.controller.StopController;
 import io.CsvWriter;
 
 import java.util.List;
@@ -8,8 +9,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-
-        dataHandler handler = new dataHandler();
+        DataHandler handler = new DataHandler();
         //handler.printStopsOfRoute("23294");
         Planer planer = new Planer("288769777", "288715949");
         List<String> routes = planer.findConnections(handler);
@@ -18,6 +18,16 @@ public class Main {
             System.out.println(routes.get(i));
         }
         handler.addStopToLine("lineId","stopId");
+
+        StopController sc = new StopController();
+      try{
+        sc.findStop("Don Bosco Bahnhof");
+      }
+      catch (Exception e)
+      {
+
+      }
+
 
     }
 }

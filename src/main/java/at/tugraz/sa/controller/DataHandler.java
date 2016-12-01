@@ -8,12 +8,13 @@ import java.util.*;
 /**
  * Created by paul on 30.11.16.
  */
-public class dataHandler {
+public class DataHandler
+{
 
     private List<Stop> stops;
     private String path;
 
-    public dataHandler() {
+    public DataHandler() {
         this.path = System.getProperty("user.dir").concat("/mapping.csv");
         stops = new ArrayList<Stop>();
     }
