@@ -1,2 +1,7 @@
 .idea
 austria-latest.osm
+osmfilter_tempfile.*
+custom-sh-cmd.txt
+sample-sh-cmd.txt
+.gradle
+build
