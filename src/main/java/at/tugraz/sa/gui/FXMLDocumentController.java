@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package at.tugraz.sa.gui;
 
 import at.tugraz.sa.Filter;
@@ -124,7 +119,7 @@ public class FXMLDocumentController implements Initializable
 
     @FXML private Label label;
 
-    //****************************************************************************************************************\\
+    //**************************************************************************
     @FXML private TextField start;
     @FXML private TextField target;
     @FXML private Button getRoutes;
@@ -133,7 +128,9 @@ public class FXMLDocumentController implements Initializable
     StopController stopController = new StopController();
 
     @FXML
-    private void handleActivityButtonAction(ActionEvent event) throws SQLException {
+    private void handleActivityButtonAction(ActionEvent event)
+      throws SQLException
+    {
         String stop1;
         String stop2;
         stop1 = start.getText();
@@ -146,39 +143,53 @@ public class FXMLDocumentController implements Initializable
         {
             //TODO:
             results.add("Enter Start and Target");
-
         }
         else
         {
             //TODO: ADD connection to results
-            planer = new Planer(stopController.findStopIdByName(start.getText()), stopController.findStopIdByName(target.getText()));
+            planer = new Planer(stopController.findStopIdByName(start.getText()),
+              stopController.findStopIdByName(target.getText()));
             results = planer.findConnections(handler);
             for(int i = 0; i < results.size(); i++)
             {
                 out.add(handler.getRoutebyID(results.get(i)));
             }
         }
-        ObservableList<String> items =FXCollections.observableArrayList();
+        ObservableList<String> items = FXCollections.observableArrayList();
         for(int i = 0; i < results.size(); i++)
         {
             items.add(out.get(i));
         }
         routes.setItems(items);
     }
-    //****************************************************************************************************************\\
+    //**************************************************************************
     @FXML private TextField route;
     @FXML private TextField stop;
     @FXML private Button addStop;
-    @FXML private TextArea feedback;
+    @FXML private Label feedback;
 
     @FXML
-    private void handleAddButton(ActionEvent event) throws SQLException {
+    private void handleAddButton(ActionEvent event) throws SQLException
+    {
+          feedback.setText("Fill out all fields to add stop.");
+          return;
+        }
 
+        StopController stopController = new StopController();
+        String stopId = stopController.findStopIdByName(stop.getText());
+        if (stopId == null)
+        {
+            feedback.setText("Stop doesn't exist.");
+        }
+        else
+        {
+            feedback.setText(stop.getText() + " added to route " + route
+              .getText() + " with ID " + stopId);
+        }
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    public void initialize(URL url, ResourceBundle rb)
+    {
+    }
 }

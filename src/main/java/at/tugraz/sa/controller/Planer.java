@@ -3,7 +3,8 @@ package at.tugraz.sa.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Planer {
+public class Planer
+{
     private String start;
     private String end;
 
@@ -26,12 +27,9 @@ public class Planer {
                 if(res1.get(i).equals(res2.get(j)))
                 {
                     routes.add(res1.get(i));
-//System.out.println(res1.get(i) + "  " + res2.get(j) + " = " + res1.get(i).equals(res2.get(j)));
                 }
             }
         }
         return routes;
     }
-
-
 }
