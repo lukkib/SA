@@ -16,7 +16,7 @@ public class Filter
   private String latMode;
 
   public Filter(String name, String lon, String lat, String lonMode, String
-    latMode)
+    latMode) throws Exception
   {
     this.name = name;
     this.lon = lon;
@@ -29,6 +29,7 @@ public class Filter
     {
       // TODO Throw exception
       // String for mode of invalid format
+      throw new Exception("Invalid mode for LON!");
     }
     if (!lat.isEmpty() && (latMode.equals("<") || latMode.equals(">")))
     {
@@ -38,6 +39,7 @@ public class Filter
     {
       // TODO Throw exception
       // String for mode of invalid format
+      throw new Exception("Invalid mode for LAT!");
     }
   }
 
@@ -59,7 +61,7 @@ public class Filter
       {
         results = nameFiltered;
       }
-      else
+      else if (!nameFiltered.isEmpty())
       {
         results.retainAll(nameFiltered);
       }
@@ -80,7 +82,7 @@ public class Filter
       {
         results = lonFiltered;
       }
-      else
+      else if (!lonFiltered.isEmpty())
       {
         results.retainAll(lonFiltered);
       }
@@ -101,7 +103,7 @@ public class Filter
       {
         results = latFiltered;
       }
-      else
+      else if (!latFiltered.isEmpty())
       {
         results.retainAll(latFiltered);
       }

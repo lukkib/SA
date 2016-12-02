@@ -6,6 +6,9 @@
 package at.tugraz.sa.gui;
 
 import at.tugraz.sa.controller.DataHandler;
+import at.tugraz.sa.Filter;
+
+import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,28 +33,79 @@ public class FXMLDocumentController implements Initializable
     @FXML private Button searchGreaterLon;
     @FXML private Button searchLessLat;
     @FXML private Button searchGreaterLat;
+    @FXML private ListView<String> searchResults;
 
     @FXML
     private void handleSearchLessLon(ActionEvent event)
     {
-      searchLessLon.setStyle("-fx-background-color: lightblue;");
+      searchGreaterLon.setId("");
       searchGreaterLon.setStyle(null);
+      searchLessLon.setId("<");
+      searchLessLon.setStyle("-fx-background-color: lightblue;");
     }
 
     @FXML
     private void handleSearchGreaterLon(ActionEvent event)
     {
+      searchLessLon.setId("");
       searchLessLon.setStyle(null);
+      searchGreaterLon.setId(">");
       searchGreaterLon.setStyle("-fx-background-color: lightblue;");
     }
 
-    @FXML private Label label;
-    
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void handleSearchLessLat(ActionEvent event)
+    {
+      searchGreaterLat.setId("");
+      searchGreaterLat.setStyle(null);
+      searchLessLat.setId("<");
+      searchLessLat.setStyle("-fx-background-color: lightblue;");
     }
+
+    @FXML
+    private void handleSearchGreaterLat(ActionEvent event)
+    {
+      searchLessLat.setId("");
+      searchLessLat.setStyle(null);
+      searchGreaterLat.setId(">");
+      searchGreaterLat.setStyle("-fx-background-color: lightblue;");
+    }
+
+    @FXML
+    private void handleSearchBtn(ActionEvent event)
+    {
+      searchResults.getItems().clear();
+      String lonMode = searchLessLon.getId().equals("<") ? "<" :
+        searchGreaterLon.getId();
+      String latMode = searchLessLat.getId().equals("<") ? "<" :
+        searchGreaterLat.getId();
+
+      try
+      {
+        Filter filter = new Filter(searchName.getText(), searchLon.getText(),
+          searchLat.getText(), lonMode, latMode);
+
+        List<StopsRecord> records = filter.start();
+
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (StopsRecord sr : records)
+        {
+          items.add(sr.getName());
+        }
+        searchResults.setItems(items);
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+      }
+      catch (Exception e) // TODO Add custom exception
+      {
+        System.err.println("TODO: Throw custom exception or handle invalid " +
+          "mode!");
+      }
+    }
+
+    @FXML private Label label;
 
     //****************************************************************************************************************\\
     @FXML private TextField start;
