@@ -23,13 +23,14 @@
             <Separator layoutX="14.0" layoutY="318.0" prefHeight="7.0" prefWidth="350.0" />
             <Pane layoutX="14.0" layoutY="450.0" prefHeight="315.0" prefWidth="358.0">
               <children>
-                <Button layoutX="6.0" layoutY="280.0" mnemonicParsing="false" prefWidth="346.0" text="Add Stop to Route" />
-                <TextField id="start" layoutX="8.0" layoutY="99.0" prefHeight="30.0" prefWidth="350.0" promptText="Longitude of stop" text="" />
-                <TextField id="target" layoutX="8.0" layoutY="143.0" prefHeight="30.0" prefWidth="350.0" promptText="Latitude of stop" text="" />
+                <Button fx:id="addStop" layoutX="6.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleAddButton" prefWidth="346.0" text="Add Stop to Route" />
+                <TextField id="start" fx:id="longitude" layoutX="8.0" layoutY="99.0" prefHeight="30.0" prefWidth="350.0" promptText="Longitude of stop" text="" />
+                <TextField id="target" fx:id="latitude" layoutX="8.0" layoutY="143.0" prefHeight="30.0" prefWidth="350.0" promptText="Latitude of stop" text="" />
+                <TextArea layoutX="8.0" layoutY="193.0" prefHeight="42.0" prefWidth="346.0" wrapText="true" />
               </children>
             </Pane>
-            <TextField id="start" layoutX="22.0" layoutY="468.0" prefHeight="30.0" prefWidth="350.0" promptText="Route" text="" />
-            <TextField id="target" layoutX="22.0" layoutY="512.0" prefHeight="30.0" prefWidth="350.0" promptText="Stop" text="" />
+            <TextField id="start" fx:id="route" layoutX="22.0" layoutY="468.0" prefHeight="30.0" prefWidth="350.0" promptText="Route" text="" />
+            <TextField id="target" fx:id="stop" layoutX="22.0" layoutY="512.0" prefHeight="30.0" prefWidth="350.0" promptText="Stop" text="" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
