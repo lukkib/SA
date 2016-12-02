@@ -40,8 +40,8 @@
             <TextField fx:id="searchLat" layoutX="246.0" layoutY="102.0" prefHeight="30.0" prefWidth="300.0" promptText="Latidude" />
             <TextField fx:id="searchLon" layoutX="246.0" layoutY="58.0" prefHeight="30.0" prefWidth="300.0" promptText="Longitude" text="" />
             <ListView fx:id="searchResults" layoutX="14.0" layoutY="208.0" prefHeight="435.0" prefWidth="732.0" />
-            <Button layoutX="14.0" layoutY="655.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Set as start" />
-            <Button layoutX="396.0" layoutY="655.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Set as target" />
+            <Button fx:id="selectStartBtn" layoutX="14.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSelectStartBtn" prefHeight="30.0" prefWidth="350.0" text="Set as start" />
+            <Button fx:id="selectTargetBtn" layoutX="396.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSelectTargetBtn" prefHeight="30.0" prefWidth="350.0" text="Set as target" />
             <Button fx:id="searchLessLon" layoutX="84.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleSearchLessLon" prefHeight="30.0" prefWidth="133.0" text="less" />
             <Button fx:id="searchBtn" layoutX="561.0" layoutY="153.0" mnemonicParsing="false" onAction="#handleSearchBtn" prefHeight="39.0" prefWidth="133.0" text="Search" />
             <Button fx:id="searchGreaterLon" layoutX="561.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleSearchGreaterLon" prefHeight="30.0" prefWidth="133.0" text="greater" />

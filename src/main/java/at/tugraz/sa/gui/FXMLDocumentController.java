@@ -5,9 +5,8 @@
  */
 package at.tugraz.sa.gui;
 
-import at.tugraz.sa.controller.DataHandler;
 import at.tugraz.sa.Filter;
-
+import at.tugraz.sa.controller.DataHandler;
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -104,6 +103,22 @@ public class FXMLDocumentController implements Initializable
           "mode!");
       }
     }
+
+    @FXML private Button selectStartBtn;
+    @FXML private Button selectTargetBtn;
+
+    @FXML
+    private void handleSelectStartBtn()
+    {
+      start.setText(searchResults.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    private void handleSelectTargetBtn()
+    {
+      target.setText(searchResults.getSelectionModel().getSelectedItem());
+    }
+
 
     @FXML private Label label;
 
