@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="at.tugraz.sa.gui.FXMLDocumentController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.tugraz.sa.gui.FXMLDocumentController">
+  <children>
+    <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
+    <SplitPane dividerPositions="0.347008547008547" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="772.0" prefWidth="1172.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TextField fx:id="start" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="350.0" promptText="Start" />
+            <TextField fx:id="target" layoutX="14.0" layoutY="58.0" prefHeight="30.0" prefWidth="350.0" promptText="Target" />
+            <ListView fx:id="routes" layoutX="14.0" layoutY="151.0" prefHeight="150.0" prefWidth="350.0" />
+            <Button fx:id="getRoutes" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleActivityButtonAction" prefHeight="30.0" prefWidth="350.0" text="Find my route !" />
+            <Separator layoutX="14.0" layoutY="318.0" prefHeight="7.0" prefWidth="350.0" />
+            <Pane layoutX="14.0" layoutY="450.0" prefHeight="315.0" prefWidth="358.0">
+              <children>
+                <Button layoutX="6.0" layoutY="280.0" mnemonicParsing="false" prefWidth="346.0" text="Add Stop to Route" />
+                <TextField id="start" layoutX="8.0" layoutY="99.0" prefHeight="30.0" prefWidth="350.0" promptText="Longitude of stop" text="" />
+                <TextField id="target" layoutX="8.0" layoutY="143.0" prefHeight="30.0" prefWidth="350.0" promptText="Latitude of stop" text="" />
+              </children>
+            </Pane>
+            <TextField id="start" layoutX="22.0" layoutY="468.0" prefHeight="30.0" prefWidth="350.0" promptText="Route" text="" />
+            <TextField id="target" layoutX="22.0" layoutY="512.0" prefHeight="30.0" prefWidth="350.0" promptText="Stop" text="" />
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TextField layoutX="85.0" layoutY="14.0" prefHeight="30.0" prefWidth="300.0" promptText="Namesearch" />
+            <TextField layoutX="246.0" layoutY="102.0" prefHeight="30.0" prefWidth="300.0" promptText="Latidude" />
+            <TextField layoutX="246.0" layoutY="58.0" prefHeight="30.0" prefWidth="300.0" promptText="Longitude" text="" />
+            <ListView layoutX="14.0" layoutY="151.0" prefHeight="492.0" prefWidth="732.0" />
+            <Button layoutX="14.0" layoutY="655.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Set as start" />
+            <Button layoutX="396.0" layoutY="655.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Set as target" />
+            <Button layoutX="84.0" layoutY="58.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="less" />
+            <Button layoutX="452.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" text="Search" />
+            <Button layoutX="561.0" layoutY="57.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="greater" />
+            <Button layoutX="84.0" layoutY="102.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="less" />
+            <Button layoutX="561.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="greater" />
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
 </AnchorPane>
