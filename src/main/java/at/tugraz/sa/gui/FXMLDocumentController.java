@@ -173,8 +173,6 @@ public class FXMLDocumentController implements Initializable
 
     @FXML
     private void handleAddButton(ActionEvent event) throws SQLException {
-        
-
 
     }
 

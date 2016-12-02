@@ -19,7 +19,7 @@ public class Main
         {
             System.out.println(routes.get(i));
         }
-        handler.addStopToLine("lineId","stopId");
+        //handler.addStopToLine("lineId","stopId");
 
         StopController sc = new StopController();
         try
