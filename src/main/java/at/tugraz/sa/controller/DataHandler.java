@@ -82,8 +82,18 @@ public class DataHandler
     //TODO: find a better solution for comparing Strings --- .equals() doesn't work properly
     public boolean compare(String str1, String str2)
     {
+        int j;
         for(int i = 0; i < str1.length() && i < str2.length(); i++)
         {
+            j = i + 1;
+            if(j == str1.length() && j < str2.length() && '0' <= str2.charAt(j) && str2.charAt(j)  <= '9')
+            {
+                return false;
+            }
+            if(j == str2.length() && j < str1.length() && '0' <= str1.charAt(j) && str2.charAt(j)  <= '9')
+            {
+                return false;
+            }
             if(str1.charAt(i) != str2.charAt(i))
             {
                 return false;
