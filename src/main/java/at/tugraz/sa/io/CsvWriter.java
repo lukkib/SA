@@ -2,11 +2,13 @@ package at.tugraz.sa.io;
 
 import java.io.*;
 
-public class CsvWriter {
+public class CsvWriter
+{
     private String path;
     BufferedWriter output;
 
-    public CsvWriter(String path) {
+    public CsvWriter(String path)
+    {
         this.path = path;
 
         try
@@ -15,7 +17,7 @@ public class CsvWriter {
         }
         catch(IOException e)
         {
-
+          e.printStackTrace();
         }
     }
 

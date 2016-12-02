@@ -3,7 +3,8 @@ package at.tugraz.sa.controller;
 import at.tugraz.sa.io.CsvReader;
 import at.tugraz.sa.io.CsvWriter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataHandler
 {
@@ -12,7 +13,8 @@ public class DataHandler
     private String path;
     private String routePath;
 
-    public DataHandler() {
+    public DataHandler()
+    {
         this.path = System.getProperty("user.dir").concat("/mapping.csv");
         this.routePath = System.getProperty("user.dir").concat("/routes.csv");
         stops = new ArrayList<Stop>();
@@ -20,7 +22,6 @@ public class DataHandler
         CsvReader in = new CsvReader(path, routePath,"|");
         stops = in.readCsv();
         routes = in.readRoutes();
-
     }
 
     // Return List of all stops within a route
@@ -68,6 +69,7 @@ public class DataHandler
         CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/mapping.csv"));
         writer.writeLine(row);
     }
+
     public boolean routeIdAvailable(String routeId)
     {
         for(int i = 0; i < stops.size(); i++)

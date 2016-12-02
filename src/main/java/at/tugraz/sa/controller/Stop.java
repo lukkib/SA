@@ -1,14 +1,17 @@
 package at.tugraz.sa.controller;
 
-public class Stop {
+public class Stop
+{
     private String routeId;
     private String stopId;
 
-    public String getRouteId() {
+    public String getRouteId()
+    {
         return routeId;
     }
 
-    public String getStopId() {
+    public String getStopId()
+    {
         return stopId;
     }
 

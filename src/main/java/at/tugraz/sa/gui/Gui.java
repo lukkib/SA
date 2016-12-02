@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package at.tugraz.sa.gui;
 
 import javafx.application.Application;
@@ -13,28 +8,22 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.URL;
 
-public class Gui extends Application {
-    
+public class Gui extends Application
+{
     @Override
     public void start(Stage stage) throws Exception
     {
         String path = "src/main/java/at/tugraz/sa/gui/FXMLDocument.fxml";
         URL url = new File(path).toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
-//        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
-    
 }

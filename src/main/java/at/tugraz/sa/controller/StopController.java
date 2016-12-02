@@ -17,9 +17,6 @@ public class StopController
   public List<StopsRecord> findStops(String name) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();
-//    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
-//    return context.selectFrom(STOPS).where(STOPS.NAME.like("%" + name + "%"))
-//      .fetch();
     return dbm.execute((context) ->
     {
       return context.selectFrom(STOPS).where(STOPS.NAME.like("%" + name + "%"))
@@ -32,7 +29,7 @@ public class StopController
    *
    * @param name      the name of the stop
    * @return id       the id of the stop
-   * @return -1       if no stop was found
+   * @return null     if no stop was found
    * @throws SQLException
    */
   public String findStopIdByName(String name) throws SQLException
@@ -41,7 +38,6 @@ public class StopController
     DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
     StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
 
-//    if (stop.field(STOPS.NAME) != null)
     if (stop != null)
     {
       dbm.close();

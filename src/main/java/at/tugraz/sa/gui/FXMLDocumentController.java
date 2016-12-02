@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package at.tugraz.sa.gui;
 
 import at.tugraz.sa.Filter;
@@ -123,7 +118,7 @@ public class FXMLDocumentController implements Initializable
 
     @FXML private Label label;
 
-    //****************************************************************************************************************\\
+    //**************************************************************************
     @FXML private TextField start;
     @FXML private TextField target;
     @FXML private Button getRoutes;
@@ -161,30 +156,32 @@ public class FXMLDocumentController implements Initializable
             results.add("Route2");
         }
         ObservableList<String> items =FXCollections.observableArrayList();
-        for(int i = 0; i < results.size(); i++)
+        for (int i = 0; i < results.size(); i++)
         {
             items.add(results.get(i));
         }
         routes.setItems(items);
     }
-    //****************************************************************************************************************\\
+    //**************************************************************************
     @FXML private TextField route;
     @FXML private TextField stop;
     @FXML private Button addStop;
-    @FXML private TextArea feedback;
+    @FXML private Label feedback;
 
     @FXML
-    private void handleAddButton(ActionEvent event) throws SQLException {
-        StopController stopController = new StopController();
-        String stopId = stopController.findStopIdByName(stop.getText());
-
+    private void handleAddButton(ActionEvent event) throws SQLException
+    {
         if(route.getText().isEmpty() || stop.getText().isEmpty())
         {
-            feedback.setText("Fill out all fields");
+          feedback.setText("Fill out all fields to add stop.");
+          return;
         }
-        else if(stopId == null)
+
+        StopController stopController = new StopController();
+        String stopId = stopController.findStopIdByName(stop.getText());
+        if (stopId == null)
         {
-            feedback.setText("Stop doesn't exist");
+            feedback.setText("Stop doesn't exist.");
         }
         else
         {
@@ -194,8 +191,7 @@ public class FXMLDocumentController implements Initializable
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    public void initialize(URL url, ResourceBundle rb)
+    {
+    }
 }

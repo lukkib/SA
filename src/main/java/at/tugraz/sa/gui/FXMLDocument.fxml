@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -13,54 +12,55 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.tugraz.sa.gui.FXMLDocumentController">
   <children>
-    <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
-    <SplitPane dividerPositions="0.347008547008547" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="772.0" prefWidth="1172.0">
+    <SplitPane dividerPositions="0.4658119658119658" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="772.0" prefWidth="1172.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <TextField fx:id="start" layoutX="26.0" layoutY="97.0" prefHeight="30.0" prefWidth="350.0" promptText="Start" />
-            <TextField fx:id="target" layoutX="26.0" layoutY="140.0" prefHeight="30.0" prefWidth="350.0" promptText="Target" />
-            <ListView fx:id="routes" layoutX="26.0" layoutY="235.0" prefHeight="150.0" prefWidth="350.0" />
-            <Button fx:id="getRoutes" layoutX="26.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleActivityButtonAction" prefHeight="30.0" prefWidth="350.0" text="Find Route" />
-            <Separator layoutX="26.0" layoutY="391.0" prefHeight="7.0" prefWidth="350.0" />
+            <TextField fx:id="start" layoutX="96.0" layoutY="126.0" prefHeight="30.0" prefWidth="350.0" promptText="Enter START" />
+            <TextField fx:id="target" layoutX="96.0" layoutY="169.0" prefHeight="30.0" prefWidth="350.0" promptText="Enter TARGET" />
+            <ListView fx:id="routes" layoutX="96.0" layoutY="272.0" prefHeight="150.0" prefWidth="350.0" />
+            <Button fx:id="getRoutes" layoutX="96.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleActivityButtonAction" prefHeight="30.0" prefWidth="350.0" text="Find Route" />
+            <Separator layoutX="96.0" layoutY="428.0" prefHeight="7.0" prefWidth="350.0" />
             <Pane layoutX="14.0" layoutY="450.0" prefHeight="315.0" prefWidth="358.0">
               <children>
-                <Button fx:id="addStop" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleAddButton" prefWidth="346.0" text="Add Stop to Route" />
-                <TextArea fx:id="feedback" layoutX="14.0" layoutY="158.0" prefHeight="42.0" prefWidth="346.0" wrapText="true" />
+                <Button fx:id="addStop" layoutX="78.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="26.0" prefWidth="350.0" text="Add Stop to Route" />
+                        <Label fx:id="feedback" layoutX="80.0" layoutY="199.0" prefHeight="66.0" prefWidth="346.0" wrapText="true" />
+                  <TextField id="target" fx:id="stop" layoutX="78.0" layoutY="104.0" prefHeight="30.0" prefWidth="350.0" promptText="Stop Name" text="" />
+                  <TextField id="start" fx:id="route" layoutX="78.0" layoutY="55.0" prefHeight="30.0" prefWidth="350.0" promptText="Route Name" text="" />
+                        <Label layoutX="78.0" text="Route Editor">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
               </children>
             </Pane>
-            <TextField id="start" fx:id="route" layoutX="22.0" layoutY="468.0" prefHeight="30.0" prefWidth="350.0" promptText="Route" text="" />
-            <TextField id="target" fx:id="stop" layoutX="22.0" layoutY="512.0" prefHeight="30.0" prefWidth="350.0" promptText="Stop" text="" />
-                  <Label layoutX="22.0" layoutY="408.0" text="Route editor">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="22.0" layoutY="31.0" text="Route Planner">
+                  <Label layoutX="96.0" layoutY="66.0" text="Route Planner">
                      <font>
                         <Font size="39.0" />
                      </font>
                   </Label>
           </children>
         </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="770.0" prefWidth="702.0">
           <children>
-            <TextField fx:id="searchName" layoutX="388.0" layoutY="14.0" prefHeight="30.0" prefWidth="300.0" promptText="Name" />
-            <TextField fx:id="searchLat" layoutX="388.0" layoutY="102.0" prefHeight="30.0" prefWidth="300.0" promptText="Latidude" />
-            <TextField fx:id="searchLon" layoutX="388.0" layoutY="58.0" prefHeight="30.0" prefWidth="300.0" promptText="Longitude" text="" />
-            <ListView fx:id="searchResults" layoutX="90.0" layoutY="211.0" prefHeight="435.0" prefWidth="596.0" />
-            <Button fx:id="selectStartBtn" layoutX="91.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleSelectStartBtn" prefHeight="30.0" prefWidth="133.0" text="Set as start" />
-            <Button fx:id="selectTargetBtn" layoutX="426.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleSelectTargetBtn" prefHeight="30.0" prefWidth="133.0" text="Set as target" />
-            <Button fx:id="searchLessLon" layoutX="84.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleSearchLessLon" prefHeight="30.0" prefWidth="133.0" text="less than" />
-            <Button fx:id="searchBtn" layoutX="388.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleSearchBtn" prefHeight="39.0" prefWidth="133.0" text="Search" />
-            <Button fx:id="searchGreaterLon" layoutX="231.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleSearchGreaterLon" prefHeight="30.0" prefWidth="133.0" text="greater than" />
-            <Button fx:id="searchLessLat" layoutX="84.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleSearchLessLat" prefHeight="30.0" prefWidth="133.0" text="less than" />
-            <Button fx:id="searchGreaterLat" layoutX="231.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleSearchGreaterLat" prefHeight="30.0" prefWidth="133.0" text="greater than" />
-                  <Label layoutX="88.0" layoutY="16.0" text="Filter Stops">
+            <TextField fx:id="searchName" layoutX="284.0" layoutY="114.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter Name" />
+            <TextField fx:id="searchLat" layoutX="284.0" layoutY="202.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter Latidude" />
+            <TextField fx:id="searchLon" layoutX="284.0" layoutY="158.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter Longitude" text="" />
+            <ListView fx:id="searchResults" layoutX="284.0" layoutY="311.0" prefHeight="334.0" prefWidth="300.0" />
+            <Button fx:id="selectStartBtn" layoutX="284.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleSelectStartBtn" prefHeight="30.0" prefWidth="133.0" text="Set as START" />
+            <Button fx:id="selectTargetBtn" layoutX="451.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleSelectTargetBtn" prefHeight="30.0" prefWidth="133.0" text="Set as TARGET" />
+            <Button fx:id="searchLessLon" layoutX="35.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleSearchLessLon" prefHeight="30.0" prefWidth="84.0" text="less" />
+            <Button fx:id="searchBtn" layoutX="282.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSearchBtn" prefHeight="39.0" prefWidth="133.0" text="Search" />
+            <Button fx:id="searchGreaterLon" layoutX="139.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleSearchGreaterLon" prefHeight="30.0" prefWidth="84.0" text="greater" />
+            <Button fx:id="searchLessLat" layoutX="35.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleSearchLessLat" prefHeight="30.0" prefWidth="84.0" text="less" />
+            <Button fx:id="searchGreaterLat" layoutX="139.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleSearchGreaterLat" prefHeight="30.0" prefWidth="84.0" text="greater" />
+                  <Label layoutX="33.0" layoutY="91.0" prefHeight="47.0" prefWidth="156.0" text="Filter Stops">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
+                  <Label layoutX="236.0" layoutY="165.0" text="than" />
+                  <Label layoutX="236.0" layoutY="209.0" text="than" />
           </children>
         </AnchorPane>
       </items>

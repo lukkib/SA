@@ -13,13 +13,14 @@ import java.util.StringTokenizer;
 /**
  *
  */
-public class CsvReader {
+public class CsvReader
+{
     private String path;
     private String routePath;
     private String separator;
 
-    public CsvReader(String path,String routePath, String separator) {
-
+    public CsvReader(String path,String routePath, String separator)
+    {
         this.path = path;
         this.routePath = routePath;
         this.separator = separator;
@@ -27,7 +28,7 @@ public class CsvReader {
 
     public List<Stop> readCsv()
     {
-        List<Stop> stops = new ArrayList<Stop>();
+        List<Stop> stops = new ArrayList<>();
         try
         {
             //Initialize Scanner
@@ -54,10 +55,9 @@ public class CsvReader {
         return stops;
     }
 
-
     public List<Route> readRoutes()
     {
-        List<Route> routes = new ArrayList<Route>();
+        List<Route> routes = new ArrayList<>();
         try
         {
             //Initialize Scanner
