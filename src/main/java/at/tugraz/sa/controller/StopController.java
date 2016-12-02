@@ -1,18 +1,27 @@
 package at.tugraz.sa.controller;
 
-import static at.tugraz.sa.model.generated.Tables.*;
-import at.tugraz.sa.model.generated.tables.pojos.*;
-import at.tugraz.sa.model.generated.tables.records.*;
-import static org.jooq.impl.DSL.*;
-import org.jooq.*;
-import org.jooq.impl.*;
-import java.sql.*;
-import java.util.function.*;
-
 import at.tugraz.sa.io.DatabaseManager;
+import at.tugraz.sa.model.generated.tables.records.StopsRecord;
+
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
+
+import java.util.List;
+import java.sql.SQLException;
+
+import static at.tugraz.sa.model.generated.Tables.STOPS;
 
 public class StopController
 {
+  public List<StopsRecord> findStops(String name) throws SQLException
+  {
+    DatabaseManager dbm = new DatabaseManager();
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    return context.selectFrom(STOPS).where(STOPS.NAME.like("%" + name + "%"))
+      .fetch();
+  }
+
   /**
    * Finds a stop by a given name.
    *
@@ -26,7 +35,6 @@ public class StopController
     DatabaseManager dbm = new DatabaseManager();
     DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
     StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
-    System.out.println(stop.getName());
 
     if (stop.field(STOPS.NAME) != null)
     {
@@ -35,6 +43,7 @@ public class StopController
     }
 //    stop.intoList()
 
+    // ELSE no stop was found
     dbm.close();
     return -1;
   }

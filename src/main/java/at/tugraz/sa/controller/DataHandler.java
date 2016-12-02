@@ -1,16 +1,12 @@
-package Controller;
+package at.tugraz.sa.controller;
 
-import io.CsvReader;
-import io.CsvWriter;
+import at.tugraz.sa.io.CsvReader;
+import at.tugraz.sa.io.CsvWriter;
 
 import java.util.*;
 
-/**
- * Created by paul on 30.11.16.
- */
 public class DataHandler
 {
-
     private List<Stop> stops;
     private String path;
 

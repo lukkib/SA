@@ -1,12 +1,14 @@
-import Controller.Planer;
-import Controller.DataHandler;
+package at.tugraz.sa;
+
+import at.tugraz.sa.controller.DataHandler;
+import at.tugraz.sa.controller.Planer;
 import at.tugraz.sa.controller.StopController;
-import io.CsvWriter;
+import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 
 import java.util.List;
 
-public class Main {
-
+public class Main
+{
     public static void main(String[] args)
     {
         DataHandler handler = new DataHandler();
@@ -20,14 +22,18 @@ public class Main {
         handler.addStopToLine("lineId","stopId");
 
         StopController sc = new StopController();
-      try{
-        sc.findStop("Don Bosco Bahnhof");
-      }
-      catch (Exception e)
-      {
+        try
+        {
+//          System.out.println(sc.findStop("Don Bosco Bahnhof"));
+          List<StopsRecord> rs = sc.findStops("straße");
+          for (StopsRecord stop : rs)
+          {
+            System.out.println(stop.getName());
+          }
+        }
+        catch (Exception e)
+        {
 
-      }
-
-
+        }
     }
 }

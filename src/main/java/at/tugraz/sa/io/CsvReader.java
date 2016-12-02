@@ -1,6 +1,6 @@
-package io;
+package at.tugraz.sa.io;
 
-import Controller.Stop;
+import at.tugraz.sa.controller.Stop;
 
 import java.io.File;
 import java.io.FileNotFoundException;

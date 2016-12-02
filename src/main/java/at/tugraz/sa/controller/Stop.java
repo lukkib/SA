@@ -1,8 +1,5 @@
-package Controller;
+package at.tugraz.sa.controller;
 
-/**
- * Created by paul on 30.11.16.
- */
 public class Stop {
     private String routeId;
     private String stopId;

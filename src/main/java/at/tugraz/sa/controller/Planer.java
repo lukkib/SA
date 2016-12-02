@@ -1,11 +1,8 @@
-package Controller;
+package at.tugraz.sa.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by paul on 30.11.16.
- */
 public class Planer {
     private String start;
     private String end;

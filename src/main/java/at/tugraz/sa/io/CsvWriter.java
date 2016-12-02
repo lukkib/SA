@@ -1,10 +1,7 @@
-package io;
+package at.tugraz.sa.io;
 
 import java.io.*;
 
-/**
- * Created by paul on 01.12.16.
- */
 public class CsvWriter {
     private String path;
     BufferedWriter output;
