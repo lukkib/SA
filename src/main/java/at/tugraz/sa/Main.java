@@ -2,10 +2,11 @@ import Controller.Planer;
 import Controller.DataHandler;
 import at.tugraz.sa.controller.StopController;
 import io.CsvWriter;
+import javafx.application.Application;
 
 import java.util.List;
 
-public class Main {
+public class Main extends Application{
 
     public static void main(String[] args)
     {
