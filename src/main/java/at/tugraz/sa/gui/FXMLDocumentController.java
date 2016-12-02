@@ -5,15 +5,13 @@
  */
 package at.tugraz.sa.gui;
 
+import at.tugraz.sa.controller.DataHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,6 +34,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField target;
     @FXML private Button getRoutes;
     @FXML private ListView<String> routes;
+    DataHandler handler = new DataHandler();
 
     @FXML
     private void handleActivityButtonAction(ActionEvent event)
@@ -53,6 +52,7 @@ public class FXMLDocumentController implements Initializable {
         }
         else
         {
+            //TODO: ADD connection to results
             results.add("Route1");
             results.add("Route2");
             results.add("Route2");
@@ -72,7 +72,28 @@ public class FXMLDocumentController implements Initializable {
         }
         routes.setItems(items);
     }
-    
+    //****************************************************************************************************************\\
+    @FXML private TextField route;
+    @FXML private TextField stop;
+    @FXML private TextField longitude;
+    @FXML private TextField latitude;
+    @FXML private Button addStop;
+    @FXML private TextArea feedback;
+
+    @FXML
+    private void handleAddButton(ActionEvent event)
+    {
+        if(route.getText().isEmpty() || stop.getText().isEmpty() || longitude.getText().isEmpty() || latitude.getText().isEmpty())
+        {
+            feedback.setText("Not all fields have been filled out, stop hasn't been added.");
+        }
+        else
+        {
+            //Adds Stop and line to mapping.csv
+            handler.addStopToLine(route.getText(),stop.getText());
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
