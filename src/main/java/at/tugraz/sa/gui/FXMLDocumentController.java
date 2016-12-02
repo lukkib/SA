@@ -128,7 +128,9 @@ public class FXMLDocumentController implements Initializable
     StopController stopController = new StopController();
 
     @FXML
-    private void handleActivityButtonAction(ActionEvent event) throws SQLException {
+    private void handleActivityButtonAction(ActionEvent event)
+      throws SQLException
+    {
         String stop1;
         String stop2;
         stop1 = start.getText();
@@ -141,19 +143,19 @@ public class FXMLDocumentController implements Initializable
         {
             //TODO:
             results.add("Enter Start and Target");
-
         }
         else
         {
             //TODO: ADD connection to results
-            planer = new Planer(Integer.toString(stopController.findStopIdByName(start.getText())), Integer.toString(stopController.findStopIdByName(target.getText())));
+            planer = new Planer(stopController.findStopIdByName(start.getText()),
+              stopController.findStopIdByName(target.getText()));
             results = planer.findConnections(handler);
             for(int i = 0; i < results.size(); i++)
             {
                 out.add(handler.getRoutebyID(results.get(i)));
             }
         }
-        ObservableList<String> items =FXCollections.observableArrayList();
+        ObservableList<String> items = FXCollections.observableArrayList();
         for(int i = 0; i < results.size(); i++)
         {
             items.add(out.get(i));
