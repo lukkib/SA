@@ -38,6 +38,19 @@ public class DataHandler
         return res;
     }
 
+    //return Name of Route
+    public String getRoutebyID(String id)
+    {
+        for(int i = 0; i < stops.size(); i++)
+        {
+            if(routes.get(i).getId().equals(id))
+            {
+                return routes.get(i).getName();
+            }
+        }
+        return null;
+    }
+
 
     public void standardise()
     {
@@ -78,5 +91,12 @@ public class DataHandler
             }
         }
         return true;
+    }
+
+    public void addLine(String id, String name)
+    {
+        String row = id.concat("|").concat(name).concat("n");
+        CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/routes.csv"));
+        writer.writeLine(row);
     }
 }

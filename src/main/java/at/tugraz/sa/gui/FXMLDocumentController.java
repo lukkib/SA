@@ -7,6 +7,7 @@ package at.tugraz.sa.gui;
 
 import at.tugraz.sa.Filter;
 import at.tugraz.sa.controller.DataHandler;
+import at.tugraz.sa.controller.Planer;
 import at.tugraz.sa.controller.StopController;
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 import javafx.collections.FXCollections;
@@ -132,13 +133,15 @@ public class FXMLDocumentController implements Initializable
     StopController stopController = new StopController();
 
     @FXML
-    private void handleActivityButtonAction(ActionEvent event)
-    {
+    private void handleActivityButtonAction(ActionEvent event) throws SQLException {
         String stop1;
         String stop2;
         stop1 = start.getText();
         stop2 = target.getText();
         List<String> results= new ArrayList<String>();
+        List<String> out= new ArrayList<String>();
+        Planer planer;
+        StopController stopController = new StopController();
         if(stop1.isEmpty() || stop2.isEmpty())
         {
             //TODO:
@@ -148,22 +151,17 @@ public class FXMLDocumentController implements Initializable
         else
         {
             //TODO: ADD connection to results
-            results.add("Route1");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
-            results.add("Route2");
+            planer = new Planer(Integer.toString(stopController.findStopIdByName(start.getText())), Integer.toString(stopController.findStopIdByName(target.getText())));
+            results = planer.findConnections(handler);
+            for(int i = 0; i < results.size(); i++)
+            {
+                out.add(handler.getRoutebyID(results.get(i)));
+            }
         }
         ObservableList<String> items =FXCollections.observableArrayList();
         for(int i = 0; i < results.size(); i++)
         {
-            items.add(results.get(i));
+            items.add(out.get(i));
         }
         routes.setItems(items);
     }
@@ -176,10 +174,12 @@ public class FXMLDocumentController implements Initializable
     @FXML
     private void handleAddButton(ActionEvent event) throws SQLException {
         StopController stopController = new StopController();
-        String stopId = stopController.findStopIdByName(stop.getText());
+        String stopId;
+        //String stopId = stopController.findStopIdByName(stop.getText());
         //System.out.println(stopId);
 
         //String stopId;
+        /*
         if(route.getText().isEmpty() || stop.getText().isEmpty())
         {
             feedback.setText("Fill out all fields");
@@ -190,8 +190,9 @@ public class FXMLDocumentController implements Initializable
         }
         else
         {
-            System.out.println(stopId);
+            //System.out.println(stopId);
         }
+        */
     }
 
     @Override
