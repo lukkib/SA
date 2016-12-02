@@ -35,20 +35,21 @@ public class StopController
    * @return -1       if no stop was found
    * @throws SQLException
    */
-  public int findStopIdByName(String name) throws SQLException
+  public String findStopIdByName(String name) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();
     DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
     StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
 
-    if (stop.field(STOPS.NAME) != null)
+//    if (stop.field(STOPS.NAME) != null)
+    if (stop != null)
     {
       dbm.close();
-      return Integer.parseInt(stop.get_40id());
+      return stop.get_40id();
     }
     // ELSE no stop was found
     dbm.close();
-    return -1;
+    return null;
   }
 
   public List<StopsRecord> filterLessThanLat(String lat) throws SQLException
