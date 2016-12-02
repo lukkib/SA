@@ -26,7 +26,6 @@ public class Planer {
                 if(res1.get(i).equals(res2.get(j)))
                 {
                     routes.add(res1.get(i));
-//TODO: remove before release
 //System.out.println(res1.get(i) + "  " + res2.get(j) + " = " + res1.get(i).equals(res2.get(j)));
                 }
             }

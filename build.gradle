@@ -7,8 +7,8 @@ plugins {
 
 }
 
-//mainClassName = 'at.tugraz.sa.Main'
-mainClassName = 'at.tugraz.sa.gui.Gui'
+mainClassName = 'at.tugraz.sa.Main'
+//mainClassName = 'at.tugraz.sa.gui.Gui'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

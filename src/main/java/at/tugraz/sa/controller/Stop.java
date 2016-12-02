@@ -8,20 +8,12 @@ public class Stop {
         return routeId;
     }
 
-    public void setRouteId(String routeId) {
-        this.routeId = routeId;
-    }
-
     public String getStopId() {
         return stopId;
     }
 
-    public void setStopId(String stopId) {
-        this.stopId = stopId;
-    }
-
-    public Stop(String routeId, String stopId) {
-
+    public Stop(String routeId, String stopId)
+    {
         this.routeId = routeId;
         this.stopId = stopId;
     }

@@ -25,15 +25,21 @@ public class Main
         try
         {
 //          System.out.println(sc.findStop("Don Bosco Bahnhof"));
-          List<StopsRecord> rs = sc.findStops("straße");
+//          List<StopsRecord> rs = sc.findStops("straße");
+
+          Filter filter = new Filter("straße","15.4326432","47.0521516",
+            "<",
+            ">");
+          List<StopsRecord> rs = filter.start();
           for (StopsRecord stop : rs)
           {
-            System.out.println(stop.getName());
+            System.out.println(stop);
           }
+          System.out.println("Total stops found: " + rs.size());
         }
         catch (Exception e)
         {
-
+          e.printStackTrace();
         }
     }
 }
