@@ -176,21 +176,20 @@ public class FXMLDocumentController implements Initializable
         StopController stopController = new StopController();
         String stopId;
         //String stopId = stopController.findStopIdByName(stop.getText());
-        //System.out.println(stopId);
 
-        //String stopId;
         /*
         if(route.getText().isEmpty() || stop.getText().isEmpty())
         {
             feedback.setText("Fill out all fields");
         }
-        else if(stopId.isEmpty())
+        else if(stopId == null)
         {
             feedback.setText("Stop doesn't exist");
         }
         else
         {
-            //System.out.println(stopId);
+            feedback.setText(stop.getText() + " added to route " + route
+              .getText() + " with ID " + stopId);
         }
         */
     }
