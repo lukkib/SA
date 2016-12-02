@@ -81,22 +81,51 @@ public class DataHandler
         CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/mapping.csv"));
         writer.writeLine(row);
     }
+
     public boolean routeIdAvailable(String routeId)
     {
-        for(int i = 0; i < stops.size(); i++)
+        for(int i = 0; i < routes.size(); i++)
         {
-            if(stops.get(i).getRouteId().equals(routeId))
+            if(routes.get(i).getId().equals(routeId))
             {
                 return false;
             }
         }
         return true;
     }
-
-    public void addLine(String id, String name)
+    public boolean routeExists(String name)
     {
-        String row = id.concat("|").concat(name).concat("n");
-        CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/routes.csv"));
-        writer.writeLine(row);
+        for(int i = 0; i < routes.size(); i++)
+        {
+            if(compare(name, routes.get(i).getName()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String generateRouteId()
+    {
+        int j = 1;
+        for(int i = 0; i < routes.size(); i++)
+        {
+            if(j < Integer.parseInt(routes.get(i).getId()))
+            {
+                j = Integer.parseInt(routes.get(i).getId());
+            }
+        }
+        return Integer.toString(j);
+    }
+
+    public void addLine(String name)
+    {
+        if(!(routeExists(name)))
+        {
+            String id = generateRouteId();
+            String row = id.concat("|").concat(name).concat("n");
+            CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/routes.csv"));
+            writer.writeLine(row);
+        }
     }
 }

@@ -151,7 +151,7 @@ public class FXMLDocumentController implements Initializable
         else
         {
             //TODO: ADD connection to results
-            planer = new Planer(Integer.toString(stopController.findStopIdByName(start.getText())), Integer.toString(stopController.findStopIdByName(target.getText())));
+            planer = new Planer(stopController.findStopIdByName(start.getText()), stopController.findStopIdByName(target.getText()));
             results = planer.findConnections(handler);
             for(int i = 0; i < results.size(); i++)
             {
@@ -173,25 +173,9 @@ public class FXMLDocumentController implements Initializable
 
     @FXML
     private void handleAddButton(ActionEvent event) throws SQLException {
-        StopController stopController = new StopController();
-        String stopId;
-        //String stopId = stopController.findStopIdByName(stop.getText());
+        
 
-        /*
-        if(route.getText().isEmpty() || stop.getText().isEmpty())
-        {
-            feedback.setText("Fill out all fields");
-        }
-        else if(stopId == null)
-        {
-            feedback.setText("Stop doesn't exist");
-        }
-        else
-        {
-            feedback.setText(stop.getText() + " added to route " + route
-              .getText() + " with ID " + stopId);
-        }
-        */
+
     }
 
     @Override
