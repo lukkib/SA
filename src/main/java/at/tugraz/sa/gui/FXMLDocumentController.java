@@ -31,6 +31,9 @@ public class FXMLDocumentController implements Initializable
     @FXML private Button searchGreaterLat;
     @FXML private ListView<String> searchResults;
 
+    public FXMLDocumentController() throws SQLException {
+    }
+
     @FXML
     private void handleSearchLessLon(ActionEvent event)
     {
@@ -171,6 +174,8 @@ public class FXMLDocumentController implements Initializable
     @FXML
     private void handleAddButton(ActionEvent event) throws SQLException
     {
+        if(route.getText().isEmpty() || stop.getText().isEmpty())
+        {
           feedback.setText("Fill out all fields to add stop.");
           return;
         }
@@ -185,6 +190,9 @@ public class FXMLDocumentController implements Initializable
         {
             feedback.setText(stop.getText() + " added to route " + route
               .getText() + " with ID " + stopId);
+            handler.addLine(route.getText());
+            //
+            handler.addStopToLine(route.getText(), stopController.findStopIdByName(stop.getText()));
         }
     }
 

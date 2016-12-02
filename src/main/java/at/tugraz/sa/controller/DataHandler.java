@@ -12,6 +12,8 @@ public class DataHandler
     private List<Route> routes;
     private String path;
     private String routePath;
+    private String newRoute;
+
 
     public DataHandler()
     {
@@ -42,10 +44,24 @@ public class DataHandler
     //return Name of Route
     public String getRoutebyID(String id)
     {
-        for(int i = 0; i < stops.size(); i++)
+        for(int i = 0; i < routes.size(); i++)
         {
             if(routes.get(i).getId().equals(id))
             {
+                return routes.get(i).getName();
+            }
+        }
+        return null;
+    }
+
+    //return Id of route
+    public String getRoutebyName(String name)
+    {
+        for(int i = 0; i < routes.size(); i++)
+        {
+            if(compare(name, routes.get(i).getName()))
+            {
+                System.out.println(routes.get(i).getName());
                 return routes.get(i).getName();
             }
         }
@@ -76,9 +92,15 @@ public class DataHandler
         return true;
     }
 
+    //Adds a stop with a line to the mapping.csv
     public void addStopToLine(String line, String stop)
     {
-        String row = line.concat("|").concat(stop).concat("\n");
+        String routeId = getRoutebyName(line);
+        if(routeId == null)
+        {
+            routeId = newRoute;
+        }
+        String row = routeId.concat("|").concat(stop).concat("\n");
         CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/mapping.csv"));
         writer.writeLine(row);
     }
@@ -116,6 +138,7 @@ public class DataHandler
                 j = Integer.parseInt(routes.get(i).getId());
             }
         }
+        j++;
         return Integer.toString(j);
     }
 
@@ -124,7 +147,8 @@ public class DataHandler
         if(!(routeExists(name)))
         {
             String id = generateRouteId();
-            String row = id.concat("|").concat(name).concat("n");
+            newRoute = id;
+            String row = id.concat("|").concat(name).concat("\n");
             CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/routes.csv"));
             writer.writeLine(row);
         }
