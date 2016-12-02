@@ -20,10 +20,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FXMLDocumentController implements Initializable {
-    
+public class FXMLDocumentController implements Initializable
+{
+    // Search function elements
+    @FXML private TextField searchName;
+    @FXML private TextField searchLat;
+    @FXML private TextField searchLon;
+    @FXML private Button searchBtn;
+    @FXML private Button searchLessLon;
+    @FXML private Button searchGreaterLon;
+    @FXML private Button searchLessLat;
+    @FXML private Button searchGreaterLat;
+
     @FXML
-    private Label label;
+    private void handleSearchLessLon(ActionEvent event)
+    {
+      searchLessLon.setStyle("-fx-background-color: lightblue;");
+      searchGreaterLon.setStyle(null);
+    }
+
+    @FXML
+    private void handleSearchGreaterLon(ActionEvent event)
+    {
+      searchLessLon.setStyle(null);
+      searchGreaterLon.setStyle("-fx-background-color: lightblue;");
+    }
+
+    @FXML private Label label;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {

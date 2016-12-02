@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="at.tugraz.sa.gui.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.tugraz.sa.gui.FXMLDocumentController">
   <children>
     <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
     <SplitPane dividerPositions="0.347008547008547" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="772.0" prefWidth="1172.0">
@@ -32,17 +34,17 @@
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <TextField layoutX="85.0" layoutY="14.0" prefHeight="30.0" prefWidth="300.0" promptText="Namesearch" />
-            <TextField layoutX="246.0" layoutY="102.0" prefHeight="30.0" prefWidth="300.0" promptText="Latidude" />
-            <TextField layoutX="246.0" layoutY="58.0" prefHeight="30.0" prefWidth="300.0" promptText="Longitude" text="" />
-            <ListView layoutX="14.0" layoutY="151.0" prefHeight="492.0" prefWidth="732.0" />
+            <TextField fx:id="searchName" layoutX="246.0" layoutY="14.0" prefHeight="30.0" prefWidth="300.0" promptText="Name" />
+            <TextField fx:id="searchLat" layoutX="246.0" layoutY="102.0" prefHeight="30.0" prefWidth="300.0" promptText="Latidude" />
+            <TextField fx:id="searchLon" layoutX="246.0" layoutY="58.0" prefHeight="30.0" prefWidth="300.0" promptText="Longitude" text="" />
+            <ListView layoutX="14.0" layoutY="208.0" prefHeight="435.0" prefWidth="732.0" />
             <Button layoutX="14.0" layoutY="655.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Set as start" />
             <Button layoutX="396.0" layoutY="655.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Set as target" />
-            <Button layoutX="84.0" layoutY="58.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="less" />
-            <Button layoutX="452.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" text="Search" />
-            <Button layoutX="561.0" layoutY="57.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="greater" />
-            <Button layoutX="84.0" layoutY="102.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="less" />
-            <Button layoutX="561.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="greater" />
+            <Button fx:id="searchLessLon" layoutX="84.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleSearchLessLon" prefHeight="30.0" prefWidth="133.0" text="less" />
+            <Button fx:id="searchBtn" layoutX="561.0" layoutY="153.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" text="Search" />
+            <Button fx:id="searchGreaterLon" layoutX="561.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleSearchGreaterLon" prefHeight="30.0" prefWidth="133.0" text="greater" />
+            <Button fx:id="searchLessLat" layoutX="84.0" layoutY="102.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="less" />
+            <Button fx:id="searchGreaterLat" layoutX="561.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="greater" />
           </children>
         </AnchorPane>
       </items>
