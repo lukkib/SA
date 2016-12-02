@@ -27,7 +27,10 @@ public class Main
 //          System.out.println(sc.findStop("Don Bosco Bahnhof"));
 //          List<StopsRecord> rs = sc.findStops("straße");
 
-          Filter filter = new Filter("straße","15.4326432","47.0521516",
+//          Filter filter = new Filter("straße","15.4326432","47.0521516",
+//            "<",
+//            ">");
+          Filter filter = new Filter("Don Bosco","15","47",
             "<",
             ">");
           List<StopsRecord> rs = filter.start();

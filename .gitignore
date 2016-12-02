@@ -5,3 +5,4 @@ custom-sh-cmd.txt
 sample-sh-cmd.txt
 .gradle
 build
+gradlew*

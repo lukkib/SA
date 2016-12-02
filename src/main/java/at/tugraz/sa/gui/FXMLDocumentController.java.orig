@@ -7,8 +7,11 @@ package at.tugraz.sa.gui;
 
 import at.tugraz.sa.Filter;
 import at.tugraz.sa.controller.DataHandler;
+<<<<<<< HEAD
 import at.tugraz.sa.controller.StopController;
+=======
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
+>>>>>>> ca3d7b66b48e51790bad58ab10d99f5d84b31938
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
