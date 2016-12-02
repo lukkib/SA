@@ -6,6 +6,7 @@
 package at.tugraz.sa.gui;
 
 import at.tugraz.sa.controller.DataHandler;
+import at.tugraz.sa.controller.StopController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -35,6 +37,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML private Button getRoutes;
     @FXML private ListView<String> routes;
     DataHandler handler = new DataHandler();
+    StopController stopController = new StopController();
 
     @FXML
     private void handleActivityButtonAction(ActionEvent event)
@@ -75,22 +78,27 @@ public class FXMLDocumentController implements Initializable {
     //****************************************************************************************************************\\
     @FXML private TextField route;
     @FXML private TextField stop;
-    @FXML private TextField longitude;
-    @FXML private TextField latitude;
     @FXML private Button addStop;
     @FXML private TextArea feedback;
 
     @FXML
-    private void handleAddButton(ActionEvent event)
-    {
-        if(route.getText().isEmpty() || stop.getText().isEmpty() || longitude.getText().isEmpty() || latitude.getText().isEmpty())
+    private void handleAddButton(ActionEvent event) throws SQLException {
+        StopController stopController = new StopController();
+        String stopId = stopController.findStopIdByName(stop.getText());
+        //System.out.println(stopId);
+
+        //String stopId;
+        if(route.getText().isEmpty() || stop.getText().isEmpty())
         {
-            feedback.setText("Not all fields have been filled out, stop hasn't been added.");
+            feedback.setText("Fill out all fields");
+        }
+        else if(stopId.isEmpty())
+        {
+            feedback.setText("Stop doesn't exist");
         }
         else
         {
-            //Adds Stop and line to mapping.csv
-            handler.addStopToLine(route.getText(),stop.getText());
+            System.out.println(stopId);
         }
     }
 

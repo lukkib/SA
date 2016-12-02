@@ -8,18 +8,24 @@ import java.util.*;
 public class DataHandler
 {
     private List<Stop> stops;
+    private List<Route> routes;
     private String path;
+    private String routePath;
 
     public DataHandler() {
         this.path = System.getProperty("user.dir").concat("/mapping.csv");
+        this.routePath = System.getProperty("user.dir").concat("/routes.csv");
         stops = new ArrayList<Stop>();
+        routes = new ArrayList<Route>();
+        CsvReader in = new CsvReader(path, routePath,"|");
+        stops = in.readCsv();
+        routes = in.readRoutes();
+
     }
 
     // Return List of all stops within a route
     public List<String> getRoutesofStop(String stopId)
     {
-        CsvReader in = new CsvReader(path, "|");
-        stops = in.readCsv();
         List<String> res = new ArrayList<String>();
         for(int i = 0; i < stops.size(); i++)
         {
@@ -31,6 +37,7 @@ public class DataHandler
         standardise();
         return res;
     }
+
 
     public void standardise()
     {
@@ -60,5 +67,16 @@ public class DataHandler
         String row = line.concat("|").concat(stop).concat("\n");
         CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/mapping.csv"));
         writer.writeLine(row);
+    }
+    public boolean routeIdAvailable(String routeId)
+    {
+        for(int i = 0; i < stops.size(); i++)
+        {
+            if(stops.get(i).getRouteId().equals(routeId))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
