@@ -1,9 +1,25 @@
 package at.tugraz.sa.controller;
 
-public class Route
-{
-    public final String id;
-    public final  String name;
+public class Route {
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private  String name;
 
     public Route(String id, String name)
     {
