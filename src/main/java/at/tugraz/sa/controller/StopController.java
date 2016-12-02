@@ -27,6 +27,14 @@ public class StopController
     DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
     StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
     System.out.println(stop.getName());
+
+    if (stop.field(STOPS.NAME) != null)
+    {
+      dbm.close();
+      return Integer.parseInt(stop.get_40id());
+    }
+//    stop.intoList()
+
     dbm.close();
     return -1;
   }
