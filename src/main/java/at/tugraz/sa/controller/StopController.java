@@ -4,9 +4,11 @@ import at.tugraz.sa.io.DatabaseManager;
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 
 import org.jooq.DSLContext;
+import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.SQLException;
 
@@ -19,8 +21,9 @@ public class StopController
     DatabaseManager dbm = new DatabaseManager();
     return dbm.execute((context) ->
     {
-      return context.selectFrom(STOPS).where(STOPS.NAME.like("%" + name + "%"))
-        .fetch();
+//      return context.selectFrom(STOPS).where(STOPS.NAME.like("%" + name + "%"))
+//        .fetch();
+        return context.selectFrom(STOPS).where(STOPS.NAME.contains(name)).fetch();
     });
   }
 
@@ -51,40 +54,56 @@ public class StopController
   public List<StopsRecord> filterLessThanLat(String lat) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();
-    return dbm.execute((context) ->
-    {
-      return context.selectFrom(STOPS).where(STOPS._40LAT.lessThan(lat))
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LAT.lessThan(lat))
         .fetch();
-    });
+
+    System.out.println("res.size: " + res.size());
+    List<StopsRecord> sr = new ArrayList<>();
+    sr.addAll(res);
+    System.out.println("sr.size: " + sr.size());
+    return sr;
   }
 
   public List<StopsRecord> filterGreaterThanLat(String lat) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();
-    return dbm.execute((context) ->
-    {
-      return context.selectFrom(STOPS).where(STOPS._40LAT.greaterThan(lat))
-        .fetch();
-    });
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LAT.greaterThan(lat))
+      .fetch();
+
+    System.out.println("res.size: " + res.size());
+    List<StopsRecord> sr = new ArrayList<>();
+    sr.addAll(res);
+    System.out.println("sr.size: " + sr.size());
+    return sr;
   }
 
   public List<StopsRecord> filterLessThanLon(String lon) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();
-    return dbm.execute((context) ->
-    {
-      return context.selectFrom(STOPS).where(STOPS._40LON.lessThan(lon))
-        .fetch();
-    });
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LON.lessThan(lon))
+      .fetch();
+
+    System.out.println("res.size: " + res.size());
+    List<StopsRecord> sr = new ArrayList<>();
+    sr.addAll(res);
+    System.out.println("sr.size: " + sr.size());
+    return sr;
   }
 
   public List<StopsRecord> filterGreaterThanLon(String lon) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();
-    return dbm.execute((context) ->
-    {
-      return context.selectFrom(STOPS).where(STOPS._40LON.greaterThan(lon))
-        .fetch();
-    });
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LON.greaterThan(lon))
+      .fetch();
+
+    System.out.println("res.size: " + res.size());
+    List<StopsRecord> sr = new ArrayList<>();
+    sr.addAll(res);
+    System.out.println("sr.size: " + sr.size());
+    return sr;
   }
 }

@@ -30,6 +30,7 @@ public class FXMLDocumentController implements Initializable
     @FXML private Button searchLessLat;
     @FXML private Button searchGreaterLat;
     @FXML private ListView<String> searchResults;
+    @FXML private Label searchTotal;
 
     public FXMLDocumentController() throws SQLException {
     }
@@ -92,6 +93,7 @@ public class FXMLDocumentController implements Initializable
           items.add(sr.getName());
         }
         searchResults.setItems(items);
+        searchTotal.setText("Total results found: " + records.size());
       }
       catch (SQLException e)
       {

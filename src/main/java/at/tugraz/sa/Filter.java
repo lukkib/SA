@@ -59,7 +59,7 @@ public class Filter
       {
         results = nameFiltered;
       }
-      else if (!nameFiltered.isEmpty())
+      else //if (!nameFiltered.isEmpty())
       {
         results.retainAll(nameFiltered);
       }
@@ -80,7 +80,7 @@ public class Filter
       {
         results = lonFiltered;
       }
-      else if (!lonFiltered.isEmpty())
+      else //if (!lonFiltered.isEmpty())
       {
         results.retainAll(lonFiltered);
       }
@@ -101,7 +101,7 @@ public class Filter
       {
         results = latFiltered;
       }
-      else if (!latFiltered.isEmpty())
+      else //if (!latFiltered.isEmpty())
       {
         results.retainAll(latFiltered);
       }
