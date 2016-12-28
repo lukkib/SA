@@ -93,7 +93,7 @@ public class FXMLDocumentController implements Initializable
           items.add(sr.getName());
         }
         searchResults.setItems(items);
-        searchTotal.setText("Total results found: " + records.size());
+        searchTotal.setText("Total results: " + records.size());
       }
       catch (SQLException e)
       {
@@ -146,26 +146,29 @@ public class FXMLDocumentController implements Initializable
         StopController stopController = new StopController();
         if(stop1.isEmpty() || stop2.isEmpty())
         {
-            //TODO:
             results.add("Enter Start and Target");
+            ObservableList<String> items = FXCollections.observableArrayList();
+            items.add(results.get(0));
+            routes.setItems(items);
         }
         else
         {
-            //TODO: ADD connection to results
-            planer = new Planer(stopController.findStopIdByName(start.getText()),
-              stopController.findStopIdByName(target.getText()));
-            results = planer.findConnections(handler);
-            for(int i = 0; i < results.size(); i++)
-            {
-                out.add(handler.getRoutebyID(results.get(i)));
-            }
-        }
-        ObservableList<String> items = FXCollections.observableArrayList();
-        for(int i = 0; i < results.size(); i++)
-        {
+          planer = new Planer(stopController.findStopIdByName(start.getText()),
+            stopController.findStopIdByName(target.getText()));
+          results = planer.findConnections(handler);
+          for(int i = 0; i < results.size(); i++)
+          {
+              out.add(handler.getRoutebyID(results.get(i)));
+          }
+
+          ObservableList<String> items = FXCollections.observableArrayList();
+          for(int i = 0; i < results.size(); i++)
+          {
             items.add(out.get(i));
+          }
+          routes.setItems(items);
         }
-        routes.setItems(items);
+
     }
     //**************************************************************************
     @FXML private TextField route;
