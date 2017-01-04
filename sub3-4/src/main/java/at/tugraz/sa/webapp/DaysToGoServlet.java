@@ -1,8 +1,8 @@
-package com.mindstorm.webapp;
+package at.tugraz.sa.webapp;
 
 import java.io.IOException;
 import javax.servlet.http.*;
-import com.mindstorm.apputils.DateUtils;
+import at.tugraz.sa.apputils.DateUtils;
 
 public class DaysToGoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

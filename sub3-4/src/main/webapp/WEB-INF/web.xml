@@ -6,7 +6,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
 		<servlet-name>DaysToGo</servlet-name>
-		<servlet-class>com.mindstorm.webapp.DaysToGoServlet</servlet-class>
+		<servlet-class>at.tugraz.sa.webapp.DaysToGoServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DaysToGo</servlet-name>

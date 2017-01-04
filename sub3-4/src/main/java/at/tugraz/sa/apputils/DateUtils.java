@@ -1,4 +1,4 @@
-package com.mindstorm.apputils;
+package at.tugraz.sa.apputils;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
