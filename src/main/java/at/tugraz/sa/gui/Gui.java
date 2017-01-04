@@ -17,7 +17,8 @@ public class Gui extends Application
         URL url = new File(path).toURI().toURL();
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
-        
+
+        stage.setTitle("Simple Route Planner");
         stage.setScene(scene);
         stage.show();
     }
