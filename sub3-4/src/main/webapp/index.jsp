@@ -1,4 +1,16 @@
-<jsp:useBean id="daystogo" class="at.tugraz.sa.apputils.DateUtils"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<p><%=daystogo.daysToNewYear()%> days to go this year. Learn Gradle now!</p>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Simple Route Planner</title>
+</head>
+<body>
+
+<h1>Simple Route Planner</h1>
+
+<h3>Click <a href="filter.jsp">here</a> to filter stops in Graz</h3>
+
+</body>
 </html>
