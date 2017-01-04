@@ -26,28 +26,41 @@
 
 <style>
     .bg-1 {
-        background-color: #1abc9c; /* Green */
-        color: #ffffff;
+        background-color: white;
+        color: white;
         background-image: url('background.JPG');
         background-size: cover;
+    }
+
+    .fc {
+        color: white;
     }
 </style>
 
 <body class="bg-1">
 
-    <div class="main bg-1">
-        <div class="container">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Route Planner</a>
+        </div>
+        <button class="btn fc navbar-btn">Stop Finder</button>
+        <button class="btn fc navbar-btn">Connection Check</button>
+        <button class="btn fc navbar-btn">Find Restaurant</button>
+    </div>
+</nav>
+
             <div class="container">
                 <h1>Filter Stops</h1>
                 <div class="row">
                     <div class="col-sm-6" style="background-color:steelblue;">
-                        <label class="radio">
-                        <input type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios1" value="option1">
+                        <label class="radio fc">
+                        <input type="radio" name="lonRadio" data-toggle="radio" id="optionsRadios1" value="option1">
                         <i></i>Lower
                         </label>
 
-                        <label class="radio">
-                        <input type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios2" value="option1" checked>
+                        <label class="radio fc">
+                        <input type="radio" name="lonRadio" data-toggle="radio" id="optionsRadios2" value="option1" checked>
                         <i></i>Greater
                         </label>
 
@@ -58,13 +71,13 @@
 
                     </div>
                     <div class="col-sm-6" style="background-color:steelblue;">
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios3" value="option1">
+                        <label class="radio fc">
+                            <input type="radio" name="latRadio" data-toggle="radio" id="optionsRadios3" value="option1">
                             <i></i>Lower
                         </label>
 
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios4" value="option1" checked>
+                        <label class="radio fc">
+                            <input type="radio" name="latRadio" data-toggle="radio" id="optionsRadios4" value="option1" checked>
                             <i></i>Greater
                         </label>
 
@@ -74,8 +87,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
     
 
