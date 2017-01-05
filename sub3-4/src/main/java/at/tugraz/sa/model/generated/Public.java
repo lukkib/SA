@@ -4,9 +4,17 @@
 package at.tugraz.sa.model.generated;
 
 
+import at.tugraz.sa.model.generated.tables.Stops;
+import at.tugraz.sa.model.generated.tables.Venues;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Generated;
 
 import org.jooq.Catalog;
+import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 
@@ -23,12 +31,22 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1923562655;
+    private static final long serialVersionUID = 2098096264;
 
     /**
      * The reference instance of <code>PUBLIC</code>
      */
     public static final Public PUBLIC = new Public();
+
+    /**
+     * The table <code>PUBLIC.STOPS</code>.
+     */
+    public final Stops STOPS = at.tugraz.sa.model.generated.tables.Stops.STOPS;
+
+    /**
+     * The table <code>PUBLIC.VENUES</code>.
+     */
+    public final Venues VENUES = at.tugraz.sa.model.generated.tables.Venues.VENUES;
 
     /**
      * No further instances allowed
@@ -44,5 +62,18 @@ public class Public extends SchemaImpl {
     @Override
     public Catalog getCatalog() {
         return DefaultCatalog.DEFAULT_CATALOG;
+    }
+
+    @Override
+    public final List<Table<?>> getTables() {
+        List result = new ArrayList();
+        result.addAll(getTables0());
+        return result;
+    }
+
+    private final List<Table<?>> getTables0() {
+        return Arrays.<Table<?>>asList(
+            Stops.STOPS,
+            Venues.VENUES);
     }
 }
