@@ -18,7 +18,7 @@ import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 /**
  * Servlet implementation class Filter
  */
-@WebServlet("/Filter")
+@WebServlet("/FilterServlet")
 public class FilterServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
