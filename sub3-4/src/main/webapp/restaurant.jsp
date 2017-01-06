@@ -39,11 +39,11 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Route Planner</a>
+            <a class="navbar-brand" href="index.jsp">Route Planner</a>
         </div>
-        <a href="index.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
-        <a href="connection.html"><button class="btn fc navbar-btn">Connection Check</button></a>
-        <a href="restaurant.html"><button class="btn fc navbar-btn" style="background-color: gray">Find Restaurant</button></a>
+        <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
+        <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
+        <a href="restaurant.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Find Restaurant</button></a>
     </div>
 </nav>
 

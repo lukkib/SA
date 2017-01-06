@@ -22,6 +22,7 @@
 </head>
 
 <%@ page contentType="text/html; charset=UTF-8" %>
+
 <style>
     .bg-1 {
         color: white;
@@ -39,11 +40,11 @@
 <nav class="navbar navbar-inverse">
     <a class="container-fluid"></a>
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">Route Planner</a>
+        <a class="navbar-brand" href="index.jsp">Route Planner</a>
     </div>
-    <a href="index.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Stop Finder</button></a>
-    <a href="connection.html"><button class="btn fc navbar-btn">Connection Check</button></a>
-    <a href="restaurant.html"><button class="btn fc navbar-btn">Find Restaurant</button></a>
+    <a href="filterHome.jsp.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Stop Finder</button></a>
+    <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
+    <a href="restaurant.jsp"><button class="btn fc navbar-btn">Find Restaurant</button></a>
 </nav>
 
 <div class="container">
@@ -52,7 +53,7 @@
     <div class="container">
 
 
-        <form name="frm" action="FilterServlet" method="post">
+        <form name="frm" action="filter" method="post">
 
 
 
@@ -92,8 +93,9 @@
                 <div class="col-sm-9">
                     <div class="col-sm-5">
                         <div class="btn-group pull-right" role="group">
-                            <button type="button" class="btn btn-danger btn-fill">Lower</button>
-                            <button type="button" class="btn btn-success btn-fill">Greater</button>
+                            <input type="hidden" name="latMode" value="null">
+                            <button type="button" value="latLower" class="btn btn-danger btn-fill" onclick="{document.frm.latMode.value=this.value;}">Lower</button>
+                            <button type="button" value="latGreater" class="btn btn-success btn-fill" onclick="{document.frm.latMode.value=this.value;}">Greater</button>
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -107,14 +109,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div class="container">
-    <nav>
-        <ul>
-            <%= request.getAttribute("list").toString() %>
-        </ul>
-    </nav>
 </div>
 
 </body>
