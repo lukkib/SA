@@ -17,17 +17,17 @@ import at.tugraz.sa.controller.StopController;
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 
 /**
- * Servlet implementation class Connection
+ * Servlet implementation class Restaurant
  */
-@WebServlet(name = "ConnectionServlet", urlPatterns = { "/connection" })
-public class ConnectionServlet extends HttpServlet
+@WebServlet(name = "RestaurantServlet", urlPatterns = { "/restaurant" })
+public class RestaurantServlet extends HttpServlet
 {
   private static final long serialVersionUID = 1L;
 
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public ConnectionServlet()
+  public RestaurantServlet()
   {
     super();
     // TODO Auto-generated constructor stub
@@ -62,10 +62,10 @@ public class ConnectionServlet extends HttpServlet
 
       if (start.isEmpty() || destination.isEmpty())
       {
-  //      results.add("Enter Start and Target");
-  //      ObservableList<String> items = FXCollections.observableArrayList();
-  //      items.add(results.get(0));
-  //      routes.setItems(items);
+        //      results.add("Enter Start and Target");
+        //      ObservableList<String> items = FXCollections.observableArrayList();
+        //      items.add(results.get(0));
+        //      routes.setItems(items);
         request.getRequestDispatcher("connectionHome.jsp").include(request, response);
         return;
       }
@@ -74,18 +74,11 @@ public class ConnectionServlet extends HttpServlet
         Planer planer = new Planer(stopController.findStopIdByName(start),
           stopController.findStopIdByName(destination));
         results = planer.findConnections(handler);
-
-        int size = 0;
         for (int i = 0; i < results.size(); i++)
         {
-          String element = handler.getRoutebyID(results.get(i));
-          if (element != null)
-          {
-            list = addElement(list, element);
-            size++;
-          }
+          list = addElement(list, handler.getRoutebyID(results.get(i)));
         }
-        request.setAttribute("results", size);
+        request.setAttribute("results", results.size());
         request.setAttribute("list", list);
         request.getRequestDispatcher("connection.jsp").include(request, response);
         return;
@@ -95,18 +88,24 @@ public class ConnectionServlet extends HttpServlet
     {
       e.printStackTrace();
     }
-
+    catch (Exception e) // TODO Add custom exception
+    {
+      System.err.println("TODO: Throw custom exception or handle invalid " +
+        "mode!");
+    }
     request.getRequestDispatcher("connectionHome.jsp").include(request, response);
     return;
   }
 
   private String addElement(String list, String element)
   {
-    list += "<option>";
-    list += element;
-    list += "</option>";
-    list += "\n";
-
+    if (!list.isEmpty())
+    {
+      list = list.concat("\n");
+    }
+    list = list.concat("<option>");
+    list = list.concat(element);
+    list = list.concat("</option>");
     return list;
   }
 }
