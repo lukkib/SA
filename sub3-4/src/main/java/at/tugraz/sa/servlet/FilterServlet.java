@@ -48,13 +48,16 @@ public class FilterServlet extends HttpServlet
 		String name = request.getParameter("name");
 		String longitude = request.getParameter("longitude");
 		String latitude = request.getParameter("latitude");
+		String lonMode = request.getParameter("lonMode");
+    String latMode = request.getParameter("latMode");
 
 		// TODO
-    String lonMode = "<"; //searchLessLon.getId().equals("<") ? "<" : searchGreaterLon.getId();
-    String latMode = "<"; //searchLessLat.getId().equals("<") ? "<" : searchGreaterLat.getId();
+//    String lonMode = "<"; //searchLessLon.getId().equals("<") ? "<" : searchGreaterLon.getId();
+//    String latMode = "<"; //searchLessLat.getId().equals("<") ? "<" : searchGreaterLat.getId();
 
 
     System.out.println(name + ", " + longitude + ", " + latitude);
+    System.out.println(lonMode + ", " + latMode);
 
     try
     {
