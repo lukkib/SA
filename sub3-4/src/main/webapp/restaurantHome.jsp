@@ -20,11 +20,12 @@
 
 </head>
 
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <style>
     .bg-1 {
-        background-color: white;
         color: white;
+        background-repeat: no-repeat;
         background-image: url('background.JPG');
         background-size: cover;
     }
@@ -36,16 +37,17 @@
 
 <body class="bg-1">
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.jsp">Route Planner</a>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.jsp">Route Planner</a>
+            </div>
+            <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
+            <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
+            <a href="restaurantHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Find Restaurant</button></a>
+            <a href="editorHome.jsp"><button class="btn fc navbar-btn">Route Editor</button> </a>
         </div>
-        <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
-        <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
-        <a href="restaurant.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Find Restaurant</button></a>
-    </div>
-</nav>
+    </nav>
 
 <div class="container">
     <h1>Find Restaurant</h1>
@@ -57,11 +59,22 @@
                 </div>
             </div>
             <div class="col-sm-2">
-                <buttton type="button" class="btn btn-success btn-fill">Find Restaurant</buttton>
+                <button type="button" class="btn btn-success btn-fill">Find Restaurant</button>
             </div>
         </div>
     </div>
 </div>
 
 </body>
+
+<!--<script src="jquery/jquery-1.10.2.js" type="text/javascript"></script>-->
+<!--<script src="assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>-->
+
+<script src="bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+<script src="assets/js/gsdk-checkbox.js"></script>
+<script src="assets/js/gsdk-radio.js"></script>
+<script src="assets/js/gsdk-bootstrapswitch.js"></script>
+<script src="assets/js/get-shit-done.js"></script>
+
+<script src="assets/js/custom.js"></script>
 </html>

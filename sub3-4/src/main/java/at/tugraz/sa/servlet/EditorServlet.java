@@ -17,17 +17,17 @@ import at.tugraz.sa.controller.StopController;
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 
 /**
- * Servlet implementation class Filter
+ * Servlet implementation class Editor
  */
-@WebServlet(name = "ConnectionServlet", urlPatterns = { "/connection" })
-public class ConnectionServlet extends HttpServlet
+@WebServlet(name = "EditorServlet", urlPatterns = { "/editor" })
+public class EditorServlet extends HttpServlet
 {
   private static final long serialVersionUID = 1L;
 
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public ConnectionServlet()
+  public EditorServlet()
   {
     super();
     // TODO Auto-generated constructor stub
@@ -46,42 +46,47 @@ public class ConnectionServlet extends HttpServlet
    */
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
   {
-    String start = request.getParameter("start");
-    String destination = request.getParameter("destination");
+    String route = request.getParameter("route");
+    String stop = request.getParameter("stop");
 
-    System.out.println("Start: " + start);
-    System.out.println("Destination: " + destination);
+    System.out.println("route: " + route);
+    System.out.println("stop: " + stop);
 
     try
     {
       List<String> results= new ArrayList<String>();
-      StopController stopController = new StopController();
       DataHandler handler = new DataHandler();
 
       String list = new String();
 
-      if (start.isEmpty() || destination.isEmpty())
+      if (route.isEmpty() || stop.isEmpty())
       {
   //      results.add("Enter Start and Target");
   //      ObservableList<String> items = FXCollections.observableArrayList();
   //      items.add(results.get(0));
   //      routes.setItems(items);
-        request.getRequestDispatcher("connectionHome.jsp").include(request, response);
+        request.getRequestDispatcher("editorHome.jsp").include(request, response);
         return;
       }
       else
       {
-        Planer planer = new Planer(stopController.findStopIdByName(start),
-          stopController.findStopIdByName(destination));
-        results = planer.findConnections(handler);
-        for (int i = 0; i < results.size(); i++)
+      	StopController stopController = new StopController();
+        String stopId = stopController.findStopIdByName(stop);
+        String feedback;
+        if (stopId == null)
         {
-          list = addElement(list, handler.getRoutebyID(results.get(i)));
+            feedback = "Stop doesn't exist.";
+            request.setAttribute("feedback", feedback);
         }
-        request.setAttribute("results", results.size());
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("connection.jsp").include(request, response);
-        return;
+        else
+        {
+            feedback = stop + " added to route " + route + " with ID " + stopId;
+            System.out.println(feedback);
+            handler.addLine(route);
+            handler.addStopToLine(route, stopController.findStopIdByName(stop));
+            request.setAttribute("feedback", feedback);
+        }
+        request.getRequestDispatcher("editor.jsp").include(request, response);
       }
     }
       catch (SQLException e)
@@ -93,7 +98,6 @@ public class ConnectionServlet extends HttpServlet
       System.err.println("TODO: Throw custom exception or handle invalid " +
         "mode!");
     }
-    request.getRequestDispatcher("connectionHome.jsp").include(request, response);
     return;
   }
 
@@ -103,9 +107,9 @@ public class ConnectionServlet extends HttpServlet
     {
       list = list.concat("\n");
     }
-    list = list.concat("<option>");
+    list = list.concat("<li>");
     list = list.concat(element);
-    list = list.concat("</option>");
+    list = list.concat("</li>");
     return list;
   }
 }

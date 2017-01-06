@@ -25,8 +25,8 @@
 
 <style>
     .bg-1 {
-        background-color: white;
         color: white;
+        background-repeat: no-repeat;
         background-image: url('background.JPG');
         background-size: cover;
     }
@@ -38,16 +38,17 @@
 
 <body class="bg-1">
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.jsp">Route Planner</a>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.jsp">Route Planner</a>
+            </div>
+            <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
+            <a href="connectionHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Connection Check</button></a>
+            <a href="restaurantHome.jsp"><button class="btn fc navbar-btn">Find Restaurant</button></a>
+            <a href="editorHome.jsp"><button class="btn fc navbar-btn">Route Editor</button> </a>
         </div>
-        <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
-        <a href="connectionHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Connection Check</button></a>
-        <a href="restaurant.jsp"><button class="btn fc navbar-btn">Find Restaurant</button></a>
-    </div>
-</nav>
+    </nav>
 
 <div class="container">
     <h1>Find Connection</h1>
@@ -70,16 +71,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="container">
+                <div class="form-group">
+                    <label for="sel1">Total results: <%= request.getAttribute("results").toString()%></label>
+                    <select class="form-control" id="sel1">
+                        <%= request.getAttribute("list").toString() %>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
     </form>
 </div>
 
-<div class="container">
-    <nav>
-        <ul>
-            <%= request.getAttribute("list").toString() %>
-        </ul>
-    </nav>
-</div>
+<%--<div class="container">--%>
+    <%--<nav>--%>
+        <%--<ul>--%>
+            <%--<%= request.getAttribute("list").toString() %>--%>
+        <%--</ul>--%>
+    <%--</nav>--%>
+<%--</div>--%>
 
 </body>
 

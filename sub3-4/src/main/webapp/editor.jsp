@@ -38,40 +38,44 @@
 
 <body class="bg-1">
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.jsp">Route Planner</a>
-            </div>
-            <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
-            <a href="connectionHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Connection Check</button></a>
-            <a href="restaurantHome.jsp"><button class="btn fc navbar-btn">Find Restaurant</button></a>
-            <a href="editorHome.jsp"><button class="btn fc navbar-btn">Route Editor</button> </a>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.jsp">Route Planner</a>
         </div>
-    </nav>
+        <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
+        <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
+        <a href="restaurantHome.jsp"><button class="btn fc navbar-btn">Find Restaurant</button></a>
+        <a href="editorHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Route Editor</button> </a>
+    </div>
+</nav>
 
 <div class="container">
-    <h1>Find Connection</h1>
+    <h1>Route Editor</h1>
 
-    <form name="frm" action="connection" method="post">
+    <form name="frm" action="editor" method="post">
         <div class="container">
             <div class="row">
                 <div class="col-sm-5">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Start" name="start"/>
+                        <input type="text" class="form-control" placeholder="Route Name" name="route"/>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Destination" name="destination"/>
+                        <input type="text" class="form-control" placeholder="Stop Name" name="stop"/>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-success btn-fill">Find Connection</button>
+                    <button type="submit" class="btn btn-success btn-fill">Create Line</button>
                 </div>
             </div>
         </div>
     </form>
+</div>
+
+<div class="container">
+    <%= request.getAttribute("feedback").toString() %>
 </div>
 
 </body>

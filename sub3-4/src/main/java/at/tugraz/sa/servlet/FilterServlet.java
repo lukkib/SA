@@ -56,6 +56,9 @@ System.out.println(lonMode + ", " + latMode);
 
     try
     {
+      lonMode = lonMode.equals("lonLower") ? "<" : ">";
+      latMode = latMode.equals("latLower") ? "<" : ">";
+
       Filter filter = new Filter(name, longitude, latitude, lonMode, latMode);
       List<StopsRecord> records = filter.start();
 
@@ -66,7 +69,7 @@ System.out.println(lonMode + ", " + latMode);
       }
 
 //      System.out.println(list);
-
+      request.setAttribute("results", records.size());
       request.setAttribute("list", list);
       request.getRequestDispatcher("filter.jsp").include(request, response);
     }
@@ -91,9 +94,9 @@ System.out.println(lonMode + ", " + latMode);
     {
       list = list.concat("\n");
     }
-    list = list.concat("<li>");
+    list = list.concat("<option>");
     list = list.concat(element);
-    list = list.concat("</li>");
+    list = list.concat("</option>");
     return list;
   }
 }
