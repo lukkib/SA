@@ -71,8 +71,28 @@ public class FilterServlet extends HttpServlet
         "mode!");
     }
 		
-		System.out.println("SUCCESS");
+		//System.out.println("SUCCESS");
+
+      String list = new String();
+      list = addElement(list, "test1");
+      list = addElement(list, "test2");
+
+      request.setAttribute("list", list);
+      request.getRequestDispatcher("stops.jsp").include(request, response);
+
 		return;
 	}
+
+	private String addElement(String list, String newLine)
+  {
+      if(!(list.isEmpty()))
+      {
+          list = list.concat("\n");
+      }
+      list = list.concat("<li>");
+      list = list.concat(newLine);
+      list = list.concat("</li>");
+      return list;
+  }
 
 }
