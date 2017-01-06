@@ -56,11 +56,20 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter Stop"/>
-                    <input type="text" class="form-control" placeholder="Distance"/>
                 </div>
             </div>
             <div class="col-sm-2">
                 <button type="button" class="btn btn-success btn-fill">Find Restaurant</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="form-group">
+                    <%--<label for="sel1">Total results: <%= request.getAttribute("results").toString()%></label>--%>
+                    <select class="form-control" id="sel1">
+                        <%= request.getAttribute("list").toString() %>
+                    </select>
+                </div>
             </div>
         </div>
     </div>

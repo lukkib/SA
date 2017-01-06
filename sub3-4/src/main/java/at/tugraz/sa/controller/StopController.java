@@ -21,8 +21,6 @@ public class StopController
     DatabaseManager dbm = new DatabaseManager();
     return dbm.execute((context) ->
     {
-//      return context.selectFrom(STOPS).where(STOPS.NAME.like("%" + name + "%"))
-//        .fetch();
         return context.selectFrom(STOPS).where(STOPS.NAME.contains(name)).fetch();
     });
   }
@@ -90,10 +88,8 @@ public class StopController
     Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LAT.lessThan(lat))
         .fetch();
 
-    System.out.println("res.size: " + res.size());
     List<StopsRecord> sr = new ArrayList<>();
     sr.addAll(res);
-    System.out.println("sr.size: " + sr.size());
     return sr;
   }
 
@@ -104,10 +100,8 @@ public class StopController
     Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LAT.greaterThan(lat))
       .fetch();
 
-    System.out.println("res.size: " + res.size());
     List<StopsRecord> sr = new ArrayList<>();
     sr.addAll(res);
-    System.out.println("sr.size: " + sr.size());
     return sr;
   }
 
@@ -118,10 +112,8 @@ public class StopController
     Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LON.lessThan(lon))
       .fetch();
 
-    System.out.println("res.size: " + res.size());
     List<StopsRecord> sr = new ArrayList<>();
     sr.addAll(res);
-    System.out.println("sr.size: " + sr.size());
     return sr;
   }
 
@@ -132,10 +124,8 @@ public class StopController
     Result<StopsRecord> res = context.selectFrom(STOPS).where(STOPS._40LON.greaterThan(lon))
       .fetch();
 
-    System.out.println("res.size: " + res.size());
     List<StopsRecord> sr = new ArrayList<>();
     sr.addAll(res);
-    System.out.println("sr.size: " + sr.size());
     return sr;
   }
 }

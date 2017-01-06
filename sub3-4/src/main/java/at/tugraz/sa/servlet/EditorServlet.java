@@ -49,9 +49,6 @@ public class EditorServlet extends HttpServlet
     String route = request.getParameter("route");
     String stop = request.getParameter("stop");
 
-    System.out.println("route: " + route);
-    System.out.println("stop: " + stop);
-
     try
     {
       List<String> results= new ArrayList<String>();
@@ -61,10 +58,6 @@ public class EditorServlet extends HttpServlet
 
       if (route.isEmpty() || stop.isEmpty())
       {
-  //      results.add("Enter Start and Target");
-  //      ObservableList<String> items = FXCollections.observableArrayList();
-  //      items.add(results.get(0));
-  //      routes.setItems(items);
         request.getRequestDispatcher("editorHome.jsp").include(request, response);
         return;
       }
@@ -81,7 +74,6 @@ public class EditorServlet extends HttpServlet
         else
         {
             feedback = stop + " added to route " + route + " with ID " + stopId;
-            System.out.println(feedback);
             handler.addLine(route);
             handler.addStopToLine(route, stopController.findStopIdByName(stop));
             request.setAttribute("feedback", feedback);
@@ -99,17 +91,5 @@ public class EditorServlet extends HttpServlet
         "mode!");
     }
     return;
-  }
-
-  private String addElement(String list, String element)
-  {
-    if (!list.isEmpty())
-    {
-      list = list.concat("\n");
-    }
-    list = list.concat("<li>");
-    list = list.concat(element);
-    list = list.concat("</li>");
-    return list;
   }
 }

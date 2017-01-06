@@ -51,9 +51,6 @@ public class FilterServlet extends HttpServlet
 		String lonMode = request.getParameter("lonMode");
     String latMode = request.getParameter("latMode");
 
-System.out.println(name + ", " + longitude + ", " + latitude);
-System.out.println(lonMode + ", " + latMode);
-
     try
     {
       lonMode = lonMode.equals("lonLower") ? "<" : ">";
@@ -68,7 +65,6 @@ System.out.println(lonMode + ", " + latMode);
         list = addElement(list, sr.getName());
       }
 
-//      System.out.println(list);
       request.setAttribute("results", records.size());
       request.setAttribute("list", list);
       request.getRequestDispatcher("filter.jsp").include(request, response);
@@ -83,20 +79,16 @@ System.out.println(lonMode + ", " + latMode);
         "mode!");
     }
 
-
-
 		return;
 	}
 
-	private String addElement(String list, String element)
+  private String addElement(String list, String element)
   {
-    if (!list.isEmpty())
-    {
-      list = list.concat("\n");
-    }
-    list = list.concat("<option>");
-    list = list.concat(element);
-    list = list.concat("</option>");
+    list += "<option>";
+    list += element;
+    list += "</option>";
+    list += "\n";
+
     return list;
   }
 }

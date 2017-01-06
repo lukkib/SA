@@ -121,23 +121,9 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </form>
     </div>
 </div>
-
-<%--<div class="container">--%>
-    <%--<nav>--%>
-        <%--<ul>--%>
-            <%--<%= request.getAttribute("list").toString() %>--%>
-        <%--</ul>--%>
-    <%--</nav>--%>
-<%--</div>--%>
-
-
 
 </body>
 

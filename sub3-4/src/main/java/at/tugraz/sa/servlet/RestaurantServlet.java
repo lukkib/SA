@@ -49,9 +49,6 @@ public class RestaurantServlet extends HttpServlet
     String start = request.getParameter("start");
     String destination = request.getParameter("destination");
 
-    System.out.println("Start: " + start);
-    System.out.println("Destination: " + destination);
-
     try
     {
       List<String> results= new ArrayList<String>();
@@ -62,10 +59,6 @@ public class RestaurantServlet extends HttpServlet
 
       if (start.isEmpty() || destination.isEmpty())
       {
-        //      results.add("Enter Start and Target");
-        //      ObservableList<String> items = FXCollections.observableArrayList();
-        //      items.add(results.get(0));
-        //      routes.setItems(items);
         request.getRequestDispatcher("connectionHome.jsp").include(request, response);
         return;
       }
@@ -99,13 +92,11 @@ public class RestaurantServlet extends HttpServlet
 
   private String addElement(String list, String element)
   {
-    if (!list.isEmpty())
-    {
-      list = list.concat("\n");
-    }
-    list = list.concat("<option>");
-    list = list.concat(element);
-    list = list.concat("</option>");
+    list += "<option>";
+    list += element;
+    list += "</option>";
+    list += "\n";
+
     return list;
   }
 }

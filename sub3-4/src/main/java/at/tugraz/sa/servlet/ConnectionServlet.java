@@ -49,9 +49,6 @@ public class ConnectionServlet extends HttpServlet
     String start = request.getParameter("start");
     String destination = request.getParameter("destination");
 
-    System.out.println("Start: " + start);
-    System.out.println("Destination: " + destination);
-
     try
     {
       List<String> results= new ArrayList<String>();
@@ -62,10 +59,6 @@ public class ConnectionServlet extends HttpServlet
 
       if (start.isEmpty() || destination.isEmpty())
       {
-  //      results.add("Enter Start and Target");
-  //      ObservableList<String> items = FXCollections.observableArrayList();
-  //      items.add(results.get(0));
-  //      routes.setItems(items);
         request.getRequestDispatcher("connectionHome.jsp").include(request, response);
         return;
       }

@@ -24,13 +24,6 @@ public class VenuesController
         DatabaseManager dbm = new DatabaseManager();
         DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
         Result<VenuesRecord> res = context.selectFrom(VENUES).where(VENUES._40LON.greaterThan(minLon)).and(VENUES._40LON.lessThan(maxLat)).and(VENUES._40LAT.greaterThan(minLat)).and(VENUES._40LON.lessThan(maxLat)).fetch();
-        /*
-        System.out.println("res.size: " + res.size());
-        List<VenuesRecord> sr = new ArrayList<>();
-        sr.addAll(res);
-        System.out.println("sr.size: " + sr.size());
-        return sr;
-        */
         ArrayList<Restaurant> venues = new ArrayList<>();
         for (VenuesRecord record: res)
         {
