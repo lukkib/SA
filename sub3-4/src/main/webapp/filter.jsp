@@ -22,9 +22,11 @@
 </head>
 
 <%@ page contentType="text/html; charset=UTF-8" %>
+
 <style>
     .bg-1 {
         color: white;
+        background-repeat: no-repeat;
         background-image: url('background.JPG');
         background-size: cover;
     }
@@ -36,15 +38,17 @@
 
 <body class="bg-1">
 
-<nav class="navbar navbar-inverse">
-    <a class="container-fluid"></a>
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Route Planner</a>
-    </div>
-    <a href="index.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Stop Finder</button></a>
-    <a href="connection.html"><button class="btn fc navbar-btn">Connection Check</button></a>
-    <a href="restaurant.html"><button class="btn fc navbar-btn">Find Restaurant</button></a>
-</nav>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.jsp">Route Planner</a>
+            </div>
+            <a href="filterHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Stop Finder</button></a>
+            <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
+            <a href="restaurantHome.jsp"><button class="btn fc navbar-btn">Find Restaurant</button></a>
+            <a href="editorHome.jsp"><button class="btn fc navbar-btn">Route Editor</button> </a>
+        </div>
+    </nav>
 
 <div class="container">
     <h1>Filter Stops</h1>
@@ -52,7 +56,7 @@
     <div class="container">
 
 
-        <form name="frm" action="FilterServlet" method="post">
+        <form name="frm" action="filter" method="post">
 
 
 
@@ -92,8 +96,9 @@
                 <div class="col-sm-9">
                     <div class="col-sm-5">
                         <div class="btn-group pull-right" role="group">
-                            <button type="button" class="btn btn-danger btn-fill">Lower</button>
-                            <button type="button" class="btn btn-success btn-fill">Greater</button>
+                            <input type="hidden" name="latMode" value="null">
+                            <button type="button" value="latLower" class="btn btn-danger btn-fill" onclick="{document.frm.latMode.value=this.value;}">Lower</button>
+                            <button type="button" value="latGreater" class="btn btn-success btn-fill" onclick="{document.frm.latMode.value=this.value;}">Greater</button>
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -105,17 +110,34 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="container">
+                    <div class="form-group">
+                        <label for="sel1">Total results: <%= request.getAttribute("results").toString()%></label>
+                        <select class="form-control" id="sel1">
+                            <%= request.getAttribute("list").toString() %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </form>
     </div>
 </div>
 
-<div class="container">
-    <nav>
-        <ul>
-            <%= request.getAttribute("list").toString() %>
-        </ul>
-    </nav>
-</div>
+<%--<div class="container">--%>
+    <%--<nav>--%>
+        <%--<ul>--%>
+            <%--<%= request.getAttribute("list").toString() %>--%>
+        <%--</ul>--%>
+    <%--</nav>--%>
+<%--</div>--%>
+
+
 
 </body>
 

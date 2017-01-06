@@ -18,7 +18,7 @@ import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 /**
  * Servlet implementation class Filter
  */
-@WebServlet(name = "FilterServlet", urlPatterns = { "/FilterServlet" })
+@WebServlet(name = "FilterServlet", urlPatterns = { "/filter" })
 public class FilterServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -51,18 +51,27 @@ public class FilterServlet extends HttpServlet
 		String lonMode = request.getParameter("lonMode");
     String latMode = request.getParameter("latMode");
 
-		// TODO
-//    String lonMode = "<"; //searchLessLon.getId().equals("<") ? "<" : searchGreaterLon.getId();
-//    String latMode = "<"; //searchLessLat.getId().equals("<") ? "<" : searchGreaterLat.getId();
-
-
-    System.out.println(name + ", " + longitude + ", " + latitude);
-    System.out.println(lonMode + ", " + latMode);
+System.out.println(name + ", " + longitude + ", " + latitude);
+System.out.println(lonMode + ", " + latMode);
 
     try
     {
-      Filter filter = new Filter(name, longitude, latitude, "<", "<");
+      lonMode = lonMode.equals("lonLower") ? "<" : ">";
+      latMode = latMode.equals("latLower") ? "<" : ">";
+
+      Filter filter = new Filter(name, longitude, latitude, lonMode, latMode);
       List<StopsRecord> records = filter.start();
+
+      String list = new String();
+      for (StopsRecord sr : records)
+      {
+        list = addElement(list, sr.getName());
+      }
+
+//      System.out.println(list);
+      request.setAttribute("results", records.size());
+      request.setAttribute("list", list);
+      request.getRequestDispatcher("filter.jsp").include(request, response);
     }
     catch (SQLException e)
     {
@@ -73,29 +82,21 @@ public class FilterServlet extends HttpServlet
       System.err.println("TODO: Throw custom exception or handle invalid " +
         "mode!");
     }
-		
-		//System.out.println("SUCCESS");
 
-      String list = new String();
-      list = addElement(list, "test1");
-      list = addElement(list, "test2");
 
-      request.setAttribute("list", list);
-      request.getRequestDispatcher("stops.jsp").include(request, response);
 
 		return;
 	}
 
-	private String addElement(String list, String newLine)
+	private String addElement(String list, String element)
   {
-      if(!(list.isEmpty()))
-      {
-          list = list.concat("\n");
-      }
-      list = list.concat("<li>");
-      list = list.concat(newLine);
-      list = list.concat("</li>");
-      return list;
+    if (!list.isEmpty())
+    {
+      list = list.concat("\n");
+    }
+    list = list.concat("<option>");
+    list = list.concat(element);
+    list = list.concat("</option>");
+    return list;
   }
-
 }

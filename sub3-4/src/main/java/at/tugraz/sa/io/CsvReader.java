@@ -85,7 +85,7 @@ public class CsvReader
         }
         return routes;
     }
-
+    /*
     public List<Restaurant> readRestaurants()
     {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
@@ -99,12 +99,12 @@ public class CsvReader
             {
                 tok = new StringTokenizer(scanner.next(), "\t");
                 Restaurant restaurant = new Restaurant(tok.nextToken(), tok.nextToken(), tok.nextToken(), tok.nextToken());
-                /*
+
                 if(tok.hasMoreTokens())
                 {
                     restaurant.setWebsite(tok.nextToken());
                 }
-                */
+
                 restaurants.add(restaurant);
             }
         }
@@ -112,6 +112,7 @@ public class CsvReader
         {
             e.printStackTrace();
         }
-        return restaurants;
+        return restaurants
     }
+    */
 }
