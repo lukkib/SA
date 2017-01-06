@@ -15,6 +15,7 @@ import at.tugraz.sa.controller.DataHandler;
 import at.tugraz.sa.controller.Planer;
 import at.tugraz.sa.controller.StopController;
 import at.tugraz.sa.model.generated.tables.records.StopsRecord;
+import at.tugraz.sa.controller.Restaurant;
 
 /**
  * Servlet implementation class Restaurant
@@ -46,47 +47,39 @@ public class RestaurantServlet extends HttpServlet
    */
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
   {
-    String start = request.getParameter("start");
-    String destination = request.getParameter("destination");
+    String stop = request.getParameter("stop");
+    String distance = request.getParameter("distance");
 
     try
     {
-      List<String> results= new ArrayList<String>();
-      StopController stopController = new StopController();
+      StopController sr = new StopController();
+      if (!sr.stopExists(stop))
+      {
+        request.getRequestDispatcher("restaurantHome.jsp").include(request, response);
+        return;
+      }
+
       DataHandler handler = new DataHandler();
+      List<Restaurant> restaurantList = handler.findRestaurantsNearStop(stop, distance);
 
       String list = new String();
-
-      if (start.isEmpty() || destination.isEmpty())
+      for (Restaurant r : restaurantList)
       {
-        request.getRequestDispatcher("connectionHome.jsp").include(request, response);
-        return;
+        list = addElement(list, r.getName());
       }
-      else
-      {
-        Planer planer = new Planer(stopController.findStopIdByName(start),
-          stopController.findStopIdByName(destination));
-        results = planer.findConnections(handler);
-        for (int i = 0; i < results.size(); i++)
-        {
-          list = addElement(list, handler.getRoutebyID(results.get(i)));
-        }
-        request.setAttribute("results", results.size());
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("connection.jsp").include(request, response);
-        return;
-      }
+      request.setAttribute("results", restaurantList.size());
+      request.setAttribute("list", list);
+      request.getRequestDispatcher("restaurant.jsp").include(request, response);
     }
     catch (SQLException e)
     {
       e.printStackTrace();
     }
-    catch (Exception e) // TODO Add custom exception
-    {
-      System.err.println("TODO: Throw custom exception or handle invalid " +
-        "mode!");
-    }
-    request.getRequestDispatcher("connectionHome.jsp").include(request, response);
+//    catch (Exception e) // TODO Add custom exception
+//    {
+//      System.err.println("TODO: Throw custom exception or handle invalid " +
+//        "mode!");
+//    }
     return;
   }
 

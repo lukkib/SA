@@ -52,17 +52,23 @@
 <div class="container">
     <h1>Find Restaurant</h1>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter Stop"/>
-                    <input type="text" class="form-control" placeholder="Distance"/>
+        <form name="frm" action="restaurant" method="post">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Stop" name="stop"/>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Distance" name="distance"/>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success btn-fill">Find Restaurant!</button>
                 </div>
             </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-success btn-fill">Find Restaurant</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 

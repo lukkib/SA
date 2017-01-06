@@ -16,6 +16,21 @@ import static at.tugraz.sa.model.generated.Tables.STOPS;
 
 public class StopController
 {
+  public Boolean stopExists(String name) throws SQLException
+  {
+    DatabaseManager dbm = new DatabaseManager();
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
+
+    if (stop != null)
+    {
+      dbm.close();
+      return true;
+    }
+    return false;
+  }
+
+
   public List<StopsRecord> findStops(String name) throws SQLException
   {
     DatabaseManager dbm = new DatabaseManager();

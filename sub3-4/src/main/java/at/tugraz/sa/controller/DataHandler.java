@@ -64,7 +64,6 @@ public class DataHandler
     {
       if(compare(name, routes.get(i).getName()))
       {
-        System.out.println(routes.get(i).getName());
         return routes.get(i).getName();
       }
     }
@@ -167,26 +166,20 @@ public class DataHandler
     }
   }
 
-  public ArrayList<Restaurant> findReastaurantsNearStop(String name, String distance)
+  public ArrayList<Restaurant> findRestaurantsNearStop(String name, String distance) throws SQLException
   {
     ArrayList<Restaurant> res = new ArrayList<>();
     double lat;
     double lon;
     double dist;
 
-    try
-    {
-      StopController stopController = new StopController();
-      lat = Double.parseDouble(stopController.findStopLatByName(name));
-      lon = Double.parseDouble(stopController.findStopLonByName(name));
-      dist = Double.parseDouble(distance);
-      BoundingBox box = new BoundingBox(lon, lat, dist);
-      VenuesController venuescontroller = new VenuesController();
-      res = venuescontroller.inBox(box.getMinLon(), box.getMaxLon(), box.getMinLat(), box.getMaxLat());
-    } catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
+    StopController stopController = new StopController();
+    lat = Double.parseDouble(stopController.findStopLatByName(name));
+    lon = Double.parseDouble(stopController.findStopLonByName(name));
+    dist = Double.parseDouble(distance);
+    BoundingBox box = new BoundingBox(lon, lat, dist);
+    VenuesController venuescontroller = new VenuesController();
+    res = venuescontroller.inBox(box.getMinLon(), box.getMaxLon(), box.getMinLat(), box.getMaxLat());
 
     return res;
   }

@@ -37,41 +37,48 @@
 
 <body class="bg-1">
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.jsp">Route Planner</a>
-            </div>
-            <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
-            <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
-            <a href="restaurantHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Find Restaurant</button></a>
-            <a href="editorHome.jsp"><button class="btn fc navbar-btn">Route Editor</button> </a>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.jsp">Route Planner</a>
         </div>
-    </nav>
+        <a href="filterHome.jsp"><button class="btn fc navbar-btn">Stop Finder</button></a>
+        <a href="connectionHome.jsp"><button class="btn fc navbar-btn">Connection Check</button></a>
+        <a href="restaurantHome.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Find Restaurant</button></a>
+        <a href="editorHome.jsp"><button class="btn fc navbar-btn">Route Editor</button> </a>
+    </div>
+</nav>
 
 <div class="container">
     <h1>Find Restaurant</h1>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter Stop"/>
+        <form name="frm" action="restaurant" method="post">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Stop" name="stop"/>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Distance" name="distance"/>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success btn-fill">Find Restaurant!</button>
                 </div>
             </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-success btn-fill">Find Restaurant</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container">
-                <div class="form-group">
-                    <%--<label for="sel1">Total results: <%= request.getAttribute("results").toString()%></label>--%>
-                    <select class="form-control" id="sel1">
-                        <%= request.getAttribute("list").toString() %>
-                    </select>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="sel1">Total results: <%= request.getAttribute("results").toString()%></label>
+                        <select class="form-control" id="sel1">
+                            <%= request.getAttribute("list").toString() %>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

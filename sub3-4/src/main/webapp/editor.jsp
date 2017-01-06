@@ -70,6 +70,9 @@
                     <button type="submit" class="btn btn-success btn-fill">Create Line!</button>
                 </div>
             </div>
+            <div class="row">
+                <p class="bg-primary"><%= request.getAttribute("feedback").toString() %></p>
+            </div>
         </div>
     </form>
 </div>

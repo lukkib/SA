@@ -56,18 +56,18 @@
     <form name="frm" action="connection" method="post">
         <div class="container">
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Start" name="start"/>
                     </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Destination" name="destination"/>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-success btn-fill">Find Connection</button>
+                    <button type="submit" class="btn btn-success btn-fill">Find Connection!</button>
                 </div>
             </div>
         </div>
