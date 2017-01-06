@@ -1,5 +1,6 @@
 package at.tugraz.sa.io;
 
+import at.tugraz.sa.controller.Restaurant;
 import at.tugraz.sa.controller.Route;
 import at.tugraz.sa.controller.Stop;
 
@@ -17,12 +18,14 @@ public class CsvReader
 {
     private String path;
     private String routePath;
+    private String restaurantPath;
     private String separator;
 
-    public CsvReader(String path,String routePath, String separator)
+    public CsvReader(String path,String routePath, String restaurantPath,String separator)
     {
         this.path = path;
         this.routePath = routePath;
+        this.restaurantPath = restaurantPath;
         this.separator = separator;
     }
 
@@ -71,7 +74,7 @@ public class CsvReader
                 //Splitting line into tokens
                 tok = new StringTokenizer(scanner.next(), separator);
                 // Creating and adding a stop to the stops list
-                Route route = new Route(tok.nextToken(), tok.nextToken());
+                Route route = new Route(tok.nextToken(), tok.nextToken().replace("\r",""));
                 routes.add(route);
             }
             scanner.close();
@@ -82,4 +85,34 @@ public class CsvReader
         }
         return routes;
     }
+    /*
+    public List<Restaurant> readRestaurants()
+    {
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        try
+        {
+            Scanner scanner = new Scanner(new File(restaurantPath));
+            scanner.useDelimiter("\n");
+            StringTokenizer tok;
+            scanner.next();
+            while(scanner.hasNext())
+            {
+                tok = new StringTokenizer(scanner.next(), "\t");
+                Restaurant restaurant = new Restaurant(tok.nextToken(), tok.nextToken(), tok.nextToken(), tok.nextToken());
+
+                if(tok.hasMoreTokens())
+                {
+                    restaurant.setWebsite(tok.nextToken());
+                }
+
+                restaurants.add(restaurant);
+            }
+        }
+        catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return restaurants
+    }
+    */
 }

@@ -27,6 +27,38 @@ public class StopController
     });
   }
 
+  public String findStopLonByName(String name) throws SQLException
+  {
+    DatabaseManager dbm = new DatabaseManager();
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
+
+    if (stop != null)
+    {
+      dbm.close();
+      return stop.get_40lon();
+    }
+    // ELSE no stop was found
+    dbm.close();
+    return null;
+  }
+
+  public String findStopLatByName(String name) throws SQLException
+  {
+    DatabaseManager dbm = new DatabaseManager();
+    DSLContext context = DSL.using(dbm.getConnection(), SQLDialect.H2);
+    StopsRecord stop = context.selectFrom(STOPS).where(STOPS.NAME.equal(name)).fetchAny();
+
+    if (stop != null)
+    {
+      dbm.close();
+      return stop.get_40lat();
+    }
+    // ELSE no stop was found
+    dbm.close();
+    return null;
+  }
+
   /**
    * Finds a stop id by a given name.
    *
