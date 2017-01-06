@@ -3,6 +3,7 @@ package at.tugraz.sa.controller;
 import at.tugraz.sa.io.CsvReader;
 import at.tugraz.sa.io.CsvWriter;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ public class DataHandler
 {
     private List<Stop> stops;
     private List<Route> routes;
+    private List<Restaurant> restaurants;
     private String path;
     private String routePath;
+    private String restaurantPath;
     private String newRoute;
 
 
@@ -19,11 +22,15 @@ public class DataHandler
     {
         this.path = System.getProperty("user.dir").concat("/mapping.csv");
         this.routePath = System.getProperty("user.dir").concat("/routes.csv");
+        //this.restaurantPath = System.getProperty("user.dir").concat("/out/Graz_venues_filtered.csv");
         stops = new ArrayList<Stop>();
         routes = new ArrayList<Route>();
-        CsvReader in = new CsvReader(path, routePath,"|");
+        //restaurants = new ArrayList<Restaurant>();
+        CsvReader in = new CsvReader(path, routePath, restaurantPath,"|");
         stops = in.readCsv();
         routes = in.readRoutes();
+        //restaurants = in.readRestaurants();
+        findReastaurantsNearStop("Andritz", "1000");
     }
 
     // Return List of all stops within a route
@@ -162,5 +169,35 @@ public class DataHandler
             CsvWriter writer = new CsvWriter(System.getProperty("user.dir").concat("/routes.csv"));
             writer.writeLine(row);
         }
+    }
+
+    public ArrayList<Restaurant> findReastaurantsNearStop(String name, String distance)
+    {
+        ArrayList<Restaurant> res = new ArrayList<>();
+        double lat;
+        double lon;
+        double dist;
+
+        try
+        {
+            StopController stopController = new StopController();
+            lat = Double.parseDouble(stopController.findStopLatByName(name));
+            lon = Double.parseDouble(stopController.findStopLonByName(name));
+            dist = Double.parseDouble(distance);
+            BoundingBox box = new BoundingBox(lon, lat, dist);
+            VenuesController venuescontroller = new VenuesController();
+            ArrayList<Restaurant> venues = venuescontroller.inBox(box.getMinLon(), box.getMaxLon(), box.getMinLat(), box.getMaxLat());
+            for (Restaurant venue: venues)
+            {
+                System.out.println(venue.getName());
+            }
+
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return res;
     }
 }
