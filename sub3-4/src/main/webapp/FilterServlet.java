@@ -18,7 +18,7 @@ import at.tugraz.sa.model.generated.tables.records.StopsRecord;
 /**
  * Servlet implementation class Filter
  */
-@WebServlet(name = "FilterServlet", urlPatterns = { "/FilterServlet" })
+@WebServlet("/FilterServlet")
 public class FilterServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ public class FilterServlet extends HttpServlet
      */
     public FilterServlet()
     {
-      super();
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -53,12 +53,9 @@ public class FilterServlet extends HttpServlet
     String lonMode = "<"; //searchLessLon.getId().equals("<") ? "<" : searchGreaterLon.getId();
     String latMode = "<"; //searchLessLat.getId().equals("<") ? "<" : searchGreaterLat.getId();
 
-
-    System.out.println(name + ", " + longitude + ", " + latitude);
-
     try
     {
-      Filter filter = new Filter(name, longitude, latitude, "<", "<");
+      Filter filter = new Filter(name, longitude, latitude, lonMode, latMode);
       List<StopsRecord> records = filter.start();
     }
     catch (SQLException e)

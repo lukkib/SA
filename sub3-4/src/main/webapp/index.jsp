@@ -14,7 +14,6 @@
     <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
 	<link href="assets/css/gsdk.css" rel="stylesheet" />
     <link href="assets/css/demo.css" rel="stylesheet" />
-    <link href="list.css" rel="stylesheet" />
 
     <!--     Font Awesome     -->
     <link href="bootstrap3/css/font-awesome.css" rel="stylesheet">
@@ -22,10 +21,9 @@
   
 </head>
 
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 <style>
     .bg-1 {
-        background-color: white;
         color: white;
         background-image: url('background.JPG');
         background-size: cover;
@@ -46,7 +44,6 @@
             <a href="index.jsp"><button class="btn fc navbar-btn" style="background-color: gray">Stop Finder</button></a>
             <a href="connection.html"><button class="btn fc navbar-btn">Connection Check</button></a>
             <a href="restaurant.html"><button class="btn fc navbar-btn">Find Restaurant</button></a>
-        </div>
     </nav>
 
             <div class="container">
@@ -55,7 +52,7 @@
                 <div class="container">
 
 
-
+                    <form action="FilterServlet" method="post">
 
 
 
@@ -86,9 +83,9 @@
 
             <div class="row">
                 <div class="col-sm-3">
-                    <form action="FilterServlet" method="post">
+
                     <button type="submit" class="btn btn-primary btn-fill">Find Stops!</button>
-                    </form>
+
 
                 </div>
                 <div class="col-sm-9">
@@ -107,7 +104,7 @@
                     </div>
                 </div>
             </div>
-
+                    </form>
         </div>
     </div>
 <!--

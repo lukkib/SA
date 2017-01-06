@@ -55,7 +55,7 @@ dependencies
 
 
             // Jetty
-            httpPort = 8080
+            httpPort = 1337
             stopPort = 9090
             stopKey = "stopKey"
         }
