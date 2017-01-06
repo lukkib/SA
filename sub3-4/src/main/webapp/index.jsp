@@ -66,9 +66,9 @@
                     <div class="col-sm-9">
                         <div class="col-sm-5">
                             <div class="btn-group pull-right" role="group">
-                                <input type="hidden" name="lonMode" value="null"/>
-                                <button type="button" value="lonLower" class="btn btn-danger btn-fill" name="lonLower" onclick="{document.frm.lonMode.value=this.value;}">Lower</button>
-                                <button type="button" value="lonGreater" class="btn btn-success btn-fill" name="lonGreater" onclick="{document.frm.lonMode.value=this.value;}">Greater</button>
+                                <input type="hidden" name="lonMode" value="null">
+                                <button type="button" value="lonLower" class="btn btn-danger btn-fill" onclick="{document.frm.lonMode.value=this.value;}">Lower</button>
+                                <button type="button" value="lonGreater" class="btn btn-success btn-fill" onclick="{document.frm.lonMode.value=this.value;}">Greater</button>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -92,8 +92,9 @@
                 <div class="col-sm-9">
                     <div class="col-sm-5">
                         <div class="btn-group pull-right" role="group">
-                            <button type="button" class="btn btn-danger btn-fill">Lower</button>
-                            <button type="button" class="btn btn-success btn-fill">Greater</button>
+                            <input type="hidden" name="latMode" value="null">
+                            <button type="button" value="latLower" class="btn btn-danger btn-fill" onclick="{document.frm.latMode.value=this.value;}">Lower</button>
+                            <button type="button" value="latGreater" class="btn btn-success btn-fill" onclick="{document.frm.latMode.value=this.value;}">Greater</button>
                         </div>
                     </div>
                     <div class="col-sm-7">
